@@ -1,7 +1,7 @@
 {
-  "name": "buuks-api",
+  "name": "node-mongo-api-boilerplate-template-ts",
   "version": "1.0.0",
-  "description": "buuks api",
+  "description": "Typscript manual download option for @code-collabo's node-mongo API boilerplate template",
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev --respawn --transpile-only src/server.ts",
