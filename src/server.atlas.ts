@@ -11,6 +11,3 @@ app.listen(port, async () => {
     console.log(err);
   }
 });
-
-// Chalk import and usage is what causes the import error
-// Also had to use node v16 (was using v14 before - not sure if this is a cause of the issue though...)
