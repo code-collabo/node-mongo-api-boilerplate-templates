@@ -4,7 +4,8 @@
   "description": "Typscript manual download option for @code-collabo's node-mongo API boilerplate template",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev:atlas": "ts-node-dev --respawn --transpile-only src/server.atlas.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Obiagba Mary",
