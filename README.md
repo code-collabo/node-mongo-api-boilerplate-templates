@@ -26,7 +26,7 @@ npm run dev:atlas
 Open up localhost port in the browser:
 
 ```
-http://localhost:3000
+http://localhost:8080
 ```
 
 ## Further help
