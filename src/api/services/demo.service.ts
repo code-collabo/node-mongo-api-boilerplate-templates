@@ -1,12 +1,12 @@
 import { DocumentDefinition } from 'mongoose';
 import { DemoDocument, DemoModel as Demo } from '../models/demo.model';
 
-export const getDemoItems = async () => {
+export const getDemoItemsService = async () => {
   const query = await Demo.find().select('_id name age').exec();
   return query;
 }
 
-export const createDemoItem = async (requestBody: DocumentDefinition<DemoDocument>) => {
+export const createDemoItemService = async (requestBody: DocumentDefinition<DemoDocument>) => {
   let demo = new Demo({
     name: requestBody.name,
     age: requestBody.age
@@ -16,12 +16,12 @@ export const createDemoItem = async (requestBody: DocumentDefinition<DemoDocumen
   return save;
 }
 
-export const getOneDemoItem = async (paramsId: string) => {
+export const getOneDemoItemService = async (paramsId: string) => {
   const query = Demo.findById(paramsId).select('_id name age').exec();
   return query;
 }
 
-export const deleteDemoItem = async (paramsId: string) => {
+export const deleteDemoItemService = async (paramsId: string) => {
   const query = await Demo.deleteOne({ _id: paramsId }).exec();
   return query;
 }

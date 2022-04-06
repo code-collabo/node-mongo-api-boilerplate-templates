@@ -1,16 +1,16 @@
 import express, { IRouter } from 'express';
 import {
-  getDemoItemsHandler,
-  createDemoItemHandler,
-  getOneDemoItemHandler,
-  deleteDemoItemHandler
+  getDemoItemsController,
+  createDemoItemController,
+  getOneDemoItemController,
+  deleteDemoItemController
 } from '../controllers/demo.controller';
 
 let router: IRouter = express.Router();
 
-router.get('/', getDemoItemsHandler);
-router.post('/', createDemoItemHandler);
-router.get('/:demoId', getOneDemoItemHandler);
-router.delete('/:demoId', deleteDemoItemHandler);
+router.get('/', getDemoItemsController);
+router.post('/', createDemoItemController);
+router.get('/:demoId', getOneDemoItemController);
+router.delete('/:demoId', deleteDemoItemController);
 
 export { router };
