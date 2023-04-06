@@ -5,8 +5,6 @@ This is the manual download option for the API boilerplate templates generated b
 > Note 
 > cd into any of the 3 folders ts, esm or cjs before installing or running the project as instructed below.
 
-Test content
-
 ## Running the API's Development server
 Make sure to either have mongoDB installed and running on your computer, or have a monogDB atlas cluster set up in the cloud. Set the environment variables in the .env file you create (see example in .env.example file). Use the commands below to run the API locally on your computer.
 
