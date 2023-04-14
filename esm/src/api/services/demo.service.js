@@ -34,6 +34,24 @@ const deleteDemoItemService = async (paramsId) => {
   return query;
 };
 
+const partialUpdateDemoItemService = async (paramsId, requestBody) => {
+  const updateOps = {};
+  for (const ops of requestBody) {
+    updateOps[ops.propName] = ops.value;
+  }
+  const query = await Demo.updateOne({ _id: paramsId }, { $set: updateOps }).exec();
+  return query;
+}
+
+const fullUpdateDemoItemService = async (paramsId, requestBody) => {
+  let resetItem = {
+    name: requestBody.name,
+    age: requestBody.age,
+  };
+  const query = await Demo.findByIdAndUpdate(paramsId, { $set: resetItem }, { new: true }).exec();
+  return query;
+}
+
 
 
 export {
@@ -41,4 +59,6 @@ export {
   createDemoItemService,
   getOneDemoItemService,
   deleteDemoItemService,
+  partialUpdateDemoItemService,
+  fullUpdateDemoItemService,
 };
