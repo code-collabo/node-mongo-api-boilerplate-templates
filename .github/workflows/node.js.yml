@@ -25,13 +25,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd ts
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: cd ../ && cd esm
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: cd ../ && cd cjs
-    - run: npm ci
-    - run: npm run build --if-present
+    - run: cd ts && npm ci
+    - run: cd ../ && cd esm && npm ci
+    - run: cd ../ && cd cjs && npm ci
 
