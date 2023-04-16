@@ -28,8 +28,7 @@ jobs:
     - run: cd ts && npm ci
     - run: cd esm && npm ci
     - run: cd cjs && npm ci
-    - run: cd ts && npm run dev:atlas
-    - run: cd ts && npm run dev
-    - run: cd esm && npm start
-    - run: cd cjs && npm start
+    - run: cd ts && npm run ci-dev
+    - run: cd ts && npm run ci-dev:atlas
+
 

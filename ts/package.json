@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "dev:atlas": "ts-node-dev --respawn --transpile-only src/server.atlas.ts",
+    "ci-dev": "ts-node-dev --transpile-only src/server.ts",
+    "ci-dev:atlas": "ts-node-dev --transpile-only src/server.atlas.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Obiagba Mary",
