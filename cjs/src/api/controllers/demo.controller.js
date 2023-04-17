@@ -7,6 +7,8 @@ const {
   updateDemoItemPropertyValuesService,
 } = require("../services/demo.service");
 
+let chalk = require('chalk');
+
 let routeName = "demo";
 let item = `${routeName}-item`;
 
