@@ -1,14 +1,14 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-let appController = require('./api/controllers/appController');
-let demoController = require('./api/controllers/demoController');
+let appRouter = require('./api/routes/app.route');
+let demoRouter = require('./api/routes/demo.routes');
 
 //===== Installed mongoDB's db =======
-const mongooseModuleExport = require('./db'); //eslint-disable-line no-unused-vars
+// const mongooseModuleExport = require('./db'); //eslint-disable-line no-unused-vars
 
 //===== MongoDB ATLAS db =======
-//const mongooseModuleExportAtlas = require('./atlas/db'); //eslint-disable-line no-unused-vars
+const mongooseModuleExportAtlas = require('./atlas/db'); //eslint-disable-line no-unused-vars
 
 const app = express();
 
@@ -19,8 +19,8 @@ app.use(express.urlencoded({
 app.use(express.json());
 app.use(cors({ origin: 'http://localhost:4200' }));
 
-app.use('/', appController);
-app.use('/demo', demoController);
+app.use('/', appRouter);
+app.use('/demo', demoRouter);
 
 app.use((req, res, next) => {
   const error = new Error('Route not found!');
