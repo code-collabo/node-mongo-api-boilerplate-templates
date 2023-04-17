@@ -5,10 +5,10 @@ let appRouter = require('./api/routes/app.route');
 let demoRouter = require('./api/routes/demo.routes');
 
 //===== Installed mongoDB's db =======
-// const mongooseModuleExport = require('./db'); //eslint-disable-line no-unused-vars
+const mongooseModuleExport = require('./db'); //eslint-disable-line no-unused-vars
 
 //===== MongoDB ATLAS db =======
-const mongooseModuleExportAtlas = require('./atlas/db'); //eslint-disable-line no-unused-vars
+// const mongooseModuleExportAtlas = require('./atlas/db'); //eslint-disable-line no-unused-vars
 
 const app = express();
 
