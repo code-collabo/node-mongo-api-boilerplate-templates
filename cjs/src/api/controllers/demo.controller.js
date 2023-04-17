@@ -49,7 +49,7 @@ const getDemoItemsController = (req, res) => {
 };
 
 const createDemoItemController = (req, res) => {
-  createDemoItemService()
+  createDemoItemService(req)
     .then((doc) => {
       res.status(201).json({
         message: `${item} created successfully!`,
