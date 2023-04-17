@@ -3,8 +3,8 @@ const {
   createDemoItemService,
   getOneDemoItemService,
   deleteDemoItemService,
-  partialUpdateDemoItemService,
-  fullUpdateDemoItemService,
+  updateOneDemoItemPropertyValueService,
+  updateDemoItemPropertyValuesService,
 } = require("../services/demo.service");
 
 let routeName = "demo";
@@ -138,9 +138,9 @@ const deleteDemoItemController = (req, res, next) => {
     });
 };
 
-const partialUpdateDemoItemController = (req, res, next) => {
+const updateOneDemoItemPropertyValueController = (req, res, next) => {
   const id = req.params.demoId;
-  partialUpdateDemoItemService(id, req.body)
+  updateOneDemoItemPropertyValueService(id, req.body)
     .then(() => {
       console.log(
         chalk.greenBright(
@@ -167,9 +167,9 @@ const partialUpdateDemoItemController = (req, res, next) => {
     });
 };
 
-const fullUpdateDemoItemController = (req, res) => {
+const updateDemoItemPropertyValuesController = (req, res) => {
   let id = req.params.id;
-  fullUpdateDemoItemService(id, req.body)
+  updateDemoItemPropertyValuesService(id, req.body)
     .then((response) => {
       console.log(
         chalk.greenBright(
@@ -199,6 +199,6 @@ module.exports = {
   createDemoItemController,
   getOneDemoItemController,
   deleteDemoItemController,
-  partialUpdateDemoItemController,
-  fullUpdateDemoItemController,
+  updateOneDemoItemPropertyValueController,
+  updateDemoItemPropertyValuesController,
 };

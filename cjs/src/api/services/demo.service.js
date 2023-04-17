@@ -31,7 +31,7 @@ const deleteDemoItemService = (paramsId) => {
   return query;
 };
 
-const partialUpdateDemoItemService = (paramsId, requestBody) => {
+const updateOneDemoItemPropertyValueService = (paramsId, requestBody) => {
   const updateOps = {};
   for (const ops of requestBody) {
     updateOps[ops.propName] = ops.value;
@@ -40,7 +40,7 @@ const partialUpdateDemoItemService = (paramsId, requestBody) => {
   return query;
 };
 
-const fullUpdateDemoItemService = (paramsId, requestBody) => {
+const updateDemoItemPropertyValuesService = (paramsId, requestBody) => {
   let resetItem = {
     name: requestBody.name,
     age: requestBody.age,
@@ -59,6 +59,6 @@ module.exports = {
   createDemoItemService,
   getOneDemoItemService,
   deleteDemoItemService,
-  partialUpdateDemoItemService,
-  fullUpdateDemoItemService,
+  updateOneDemoItemPropertyValueService,
+  updateDemoItemPropertyValuesService,
 };

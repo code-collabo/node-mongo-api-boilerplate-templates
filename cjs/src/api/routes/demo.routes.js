@@ -5,8 +5,8 @@ const {
   createDemoItemController,
   getOneDemoItemController,
   deleteDemoItemController,
-  partialUpdateDemoItemController,
-  fullUpdateDemoItemController,
+  updateOneDemoItemPropertyValueController,
+  updateDemoItemPropertyValuesController,
 } = require("../controllers/demo.controller");
 
 let router = express.Router();
@@ -19,7 +19,7 @@ router.get("/", getDemoItemsController);
 router.post("/", createDemoItemController);
 router.get("/:demoId", getOneDemoItemController);
 router.delete("/:demoId", deleteDemoItemController);
-router.patch("/:demoId", partialUpdateDemoItemController);
-router.put("/:id", fullUpdateDemoItemController);
+router.patch("/:demoId", updateOneDemoItemPropertyValueController);
+router.put("/:id", updateDemoItemPropertyValuesController);
 
 module.exports = router;
