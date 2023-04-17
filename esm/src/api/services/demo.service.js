@@ -19,7 +19,6 @@ const createDemoItemService = async (requestBody) => {
   return save;
 };
 
-
 /*=============================
   operations for /demo/demoId
 ==============================*/
@@ -34,31 +33,36 @@ const deleteDemoItemService = async (paramsId) => {
   return query;
 };
 
-const partialUpdateDemoItemService = async (paramsId, requestBody) => {
+const updateOneDemoItemPropertyValueService = async (paramsId, requestBody) => {
   const updateOps = {};
   for (const ops of requestBody) {
     updateOps[ops.propName] = ops.value;
   }
-  const query = await Demo.updateOne({ _id: paramsId }, { $set: updateOps }).exec();
+  const query = await Demo.updateOne(
+    { _id: paramsId },
+    { $set: updateOps }
+  ).exec();
   return query;
-}
+};
 
-const fullUpdateDemoItemService = async (paramsId, requestBody) => {
+const updateDemoItemPropertyValuesService = async (paramsId, requestBody) => {
   let resetItem = {
     name: requestBody.name,
     age: requestBody.age,
   };
-  const query = await Demo.findByIdAndUpdate(paramsId, { $set: resetItem }, { new: true }).exec();
+  const query = await Demo.findByIdAndUpdate(
+    paramsId,
+    { $set: resetItem },
+    { new: true }
+  ).exec();
   return query;
-}
-
-
+};
 
 export {
   getDemoItemsService,
   createDemoItemService,
   getOneDemoItemService,
   deleteDemoItemService,
-  partialUpdateDemoItemService,
-  fullUpdateDemoItemService,
+  updateOneDemoItemPropertyValueService,
+  updateDemoItemPropertyValuesService,
 };

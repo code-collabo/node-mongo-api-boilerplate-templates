@@ -3,8 +3,8 @@ import {
   createDemoItemService,
   getOneDemoItemService,
   deleteDemoItemService,
-  partialUpdateDemoItemService,
-  fullUpdateDemoItemService,
+  updateOneDemoItemPropertyValueService,
+  updateDemoItemPropertyValuesService,
 } from "../services/demo.service";
 
 import chalk from "chalk";
@@ -138,9 +138,12 @@ const deleteDemoItemController = async (req, res, next) => {
   }
 };
 
-const partialUpdateDemoItemController = async (req, res, next) => {
+const updateOneDemoItemPropertyValueController = async (req, res, next) => {
   try {
-    let doc = await partialUpdateDemoItemService(req.params.demoId, req.body);
+    let doc = await updateOneDemoItemPropertyValueService(
+      req.params.demoId,
+      req.body
+    );
     console.log(
       chalk.greenBright(
         `\nPATCH request for ID ${doc._id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${doc._id}\n`
@@ -154,7 +157,7 @@ const partialUpdateDemoItemController = async (req, res, next) => {
         url: `http://localhost:3000/${routeName}/${doc._id}`,
       },
     });
-  } catch (error) {
+  } catch (err) {
     res.status(500).json({
       message: `Error updating ${item} property & value`,
       error: `${err}`,
@@ -165,10 +168,12 @@ const partialUpdateDemoItemController = async (req, res, next) => {
   }
 };
 
-
-const fullUpdateDemoItemController = async (req, res) => {
+const updateDemoItemPropertyValuesController = async (req, res) => {
   try {
-    let doc = await fullUpdateDemoItemService(req.params.id, req.body);
+    let doc = await updateDemoItemPropertyValuesService(
+      req.params.id,
+      req.body
+    );
     console.log(
       chalk.greenBright(
         `\nPUT request for ID ${doc._id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${doc._id}\n`
@@ -182,7 +187,7 @@ const fullUpdateDemoItemController = async (req, res) => {
         url: `http://localhost:3000/${routeName}/${doc._id}`,
       },
     });
-  } catch (error) {
+  } catch (err) {
     res.status(500).json({
       message: `Error updating ${item}`,
       error: `${err}`,
@@ -196,6 +201,6 @@ export {
   createDemoItemController,
   getOneDemoItemController,
   deleteDemoItemController,
-  partialUpdateDemoItemController,
-  fullUpdateDemoItemController,
+  updateOneDemoItemPropertyValueController,
+  updateDemoItemPropertyValuesController,
 };
