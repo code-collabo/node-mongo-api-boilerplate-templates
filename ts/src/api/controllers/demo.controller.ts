@@ -28,9 +28,9 @@ export const getDemoItemsController = async (req: Request, res: Response) => {
           request: {
             type: 'GET',
             url: `http://localhost:3000/${routeName}/${doc._id}`
-          },
-        };
-      }),
+          }
+        }
+      })
     };
     res.status(200).json(response);
     return response;
@@ -52,9 +52,9 @@ export const createDemoItemController = async (req: Request, res: Response) => {
         age: doc.age,
         request: {
           type: 'GET',
-          url: `http://localhost:3000/${routeName}/${doc._id}`,
-        },
-      },
+          url: `http://localhost:3000/${routeName}/${doc._id}`
+        }
+      }
     });
     return doc;
   } catch (err) {
