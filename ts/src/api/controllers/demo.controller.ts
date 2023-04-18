@@ -7,7 +7,9 @@ import {
   getDemoItemsService,
   createDemoItemService,
   getOneDemoItemService,
-  deleteDemoItemService
+  deleteDemoItemService,
+  updateOneDemoItemPropertyValueService,
+  updateDemoItemPropertyValuesService,
 } from '../services/demo.service';
 
 let routeName = 'demo';
@@ -111,4 +113,55 @@ export const deleteDemoItemController = async (req: Request, res: Response, next
       error: `${err}`
     });
   }
-}
+};
+
+export const updateOneDemoItemPropertyValueController = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    let doc = await updateOneDemoItemPropertyValueService(
+      req.params.demoId,
+      req.body
+    );
+    return res.status(200).json({
+      message: 'Patch request successful!',
+      request: {
+        type: 'GET',
+        description: `Url link to updated ${item}`,
+        url: `http://localhost:3000/${routeName}/${doc._id}`,
+      },
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: `Error updating ${item} property & value`,
+      error: `${err}`,
+    });
+  }
+};
+
+export const updateDemoItemPropertyValuesController = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    let doc = await updateDemoItemPropertyValuesService(
+      req.params.id,
+      req.body
+    );
+    return res.status(200).json({
+      message: `Put request successful!`,
+      request: {
+        type: 'GET',
+        description: `Url link to updated ${item}`,
+        url: `http://localhost:3000/${routeName}/${doc._id}`,
+      },
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: `Error updating ${item}`,
+      error: `${err}`,
+    });
+  }
+};
