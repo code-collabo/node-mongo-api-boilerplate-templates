@@ -59,16 +59,12 @@ export const createDemoItemController = async (req: Request, res: Response) => {
     return doc;
   } catch (err) {
     res.status(500).json({
-      error: `${err}`,
+      error: `${err}`
     });
   }
-};
+}
 
-export const getOneDemoItemController = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const getOneDemoItemController = async (req: Request, res: Response, next: NextFunction) => {
   try {
     let doc = await getOneDemoItemService(req.params.demoId);
     if (doc) {
