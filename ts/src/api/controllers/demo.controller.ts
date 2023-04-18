@@ -1,4 +1,8 @@
-import { NextFunction, Request, Response } from 'express';
+import {
+  NextFunction,
+  Request,
+  Response
+} from 'express';
 import {
   getDemoItemsService,
   createDemoItemService,
@@ -16,14 +20,14 @@ export const getDemoItemsController = async (req: Request, res: Response) => {
     let docs = await getDemoItemsService();
     const response = {
       count: docs.length,
-      items: docs.map((doc) => {
+      items: docs.map(doc => {
         return {
           _id: doc._id,
           name: doc.name,
           age: doc.age,
           request: {
             type: 'GET',
-            url: `http://localhost:3000/${routeName}/${doc._id}`,
+            url: `http://localhost:3000/${routeName}/${doc._id}`
           },
         };
       }),
@@ -32,10 +36,10 @@ export const getDemoItemsController = async (req: Request, res: Response) => {
     return response;
   } catch (err) {
     res.status(500).json({
-      error: `${err}`,
+      error: `${err}`
     });
   }
-};
+}
 
 export const createDemoItemController = async (req: Request, res: Response) => {
   try {
