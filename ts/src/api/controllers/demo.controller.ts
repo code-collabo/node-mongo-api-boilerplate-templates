@@ -92,11 +92,7 @@ export const getOneDemoItemController = async (req: Request, res: Response, next
   }
 }
 
-export const deleteDemoItemController = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const deleteDemoItemController = async (req: Request, res: Response, next: NextFunction) => {
   try {
     let doc = await deleteDemoItemService(req.params.demoId);
     res.status(200).json({
@@ -107,14 +103,14 @@ export const deleteDemoItemController = async (
         url: `http://localhost:3000/${item}/`,
         body: {
           name: 'String',
-          age: 'Number',
-        },
-      },
+          age: 'Number'
+        }
+      }
     });
   } catch (err) {
     res.status(500).json({
       message: `Error deleting ${item}`,
-      error: `${err}`,
+      error: `${err}`
     });
   }
 };
