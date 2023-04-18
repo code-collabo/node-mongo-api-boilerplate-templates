@@ -75,22 +75,22 @@ export const getOneDemoItemController = async (req: Request, res: Response, next
         request: {
           type: 'GET',
           description: `Url link to all ${item}s`,
-          url: `http://localhost:3000/${routeName}/`,
-        },
+          url: `http://localhost:3000/${routeName}/`
+        }
       });
       return doc;
     } else {
       return res.status(404).json({
-        message: 'No record found for provided ID',
+        message: 'No record found for provided ID'
       });
     }
   } catch (err) {
     res.status(500).json({
       message: 'Invalid ID',
-      error: `${err}`,
+      error: `${err}`
     });
   }
-};
+}
 
 export const deleteDemoItemController = async (
   req: Request,
