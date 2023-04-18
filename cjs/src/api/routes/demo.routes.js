@@ -1,0 +1,25 @@
+const express = require("express");
+
+const {
+  getDemoItemsController,
+  createDemoItemController,
+  getOneDemoItemController,
+  deleteDemoItemController,
+  updateOneDemoItemPropertyValueController,
+  updateDemoItemPropertyValuesController,
+} = require("../controllers/demo.controller");
+
+let router = express.Router();
+
+/*======================
+  operations for /demo
+=======================*/
+
+router.get("/", getDemoItemsController);
+router.post("/", createDemoItemController);
+router.get("/:demoId", getOneDemoItemController);
+router.delete("/:demoId", deleteDemoItemController);
+router.patch("/:demoId", updateOneDemoItemPropertyValueController);
+router.put("/:id", updateDemoItemPropertyValuesController);
+
+module.exports = router;
