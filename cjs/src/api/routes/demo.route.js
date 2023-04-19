@@ -1,12 +1,12 @@
-import express from 'express';
-import {
+const express = require('express');
+const {
   getDemoItemsController,
   createDemoItemController,
   getOneDemoItemController,
   deleteDemoItemController,
   updateOneDemoItemPropertyValueController,
   updateDemoItemPropertyValuesController,
-} from '../controllers/demo.controller';
+} = require('../controllers/demo.controller');
 
 let router = express.Router();
 
@@ -17,4 +17,4 @@ router.delete('/:demoId', deleteDemoItemController);
 router.patch('/:demoId', updateOneDemoItemPropertyValueController);
 router.put('/:id', updateDemoItemPropertyValuesController);
 
-export { router };
+module.exports = router;
