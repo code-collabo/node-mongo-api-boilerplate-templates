@@ -10,7 +10,6 @@ export const createDemoItemService = async (requestBody) => {
     name: requestBody.name,
     age: requestBody.age,
   });
-
   const save = await demo.save();
   return save;
 };
@@ -30,10 +29,7 @@ export const updateOneDemoItemPropertyValueService = async (paramsId, requestBod
   for (const ops of requestBody) {
     updateOps[ops.propName] = ops.value;
   }
-  const query = await Demo.updateOne(
-    { _id: paramsId },
-    { $set: updateOps }
-  ).exec();
+  const query = await Demo.updateOne({ _id: paramsId }, { $set: updateOps }).exec();
   return query;
 };
 
@@ -42,10 +38,6 @@ export const updateDemoItemPropertyValuesService = async (paramsId, requestBody)
     name: requestBody.name,
     age: requestBody.age,
   };
-  const query = await Demo.findByIdAndUpdate(
-    paramsId,
-    { $set: resetItem },
-    { new: true }
-  ).exec();
+  const query = await Demo.findByIdAndUpdate(paramsId, { $set: resetItem }, { new: true }).exec();
   return query;
 };

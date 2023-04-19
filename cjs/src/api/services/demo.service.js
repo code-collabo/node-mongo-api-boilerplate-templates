@@ -12,7 +12,6 @@ function createDemoItemService (req) {
     name: req.body.name,
     age: req.body.age,
   });
-
   return demo.save();
 };
 
@@ -40,12 +39,7 @@ function updateDemoItemPropertyValuesService (paramsId, requestBody) {
     name: requestBody.name,
     age: requestBody.age,
   };
-
-  const query = Demo.findByIdAndUpdate(
-    paramsId,
-    { $set: resetItem },
-    { new: true }
-  ).exec();
+  const query = Demo.findByIdAndUpdate(paramsId, { $set: resetItem }, { new: true }).exec();
   return query;
 };
 
