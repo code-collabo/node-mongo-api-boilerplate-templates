@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 let appRouter = require('./api/routes/app.route');
-let demoRouter = require('./api/routes/demo.routes');
+let demoRouter = require('./api/routes/demo.route');
 
 //===== Installed mongoDB's db =======
 const mongooseModuleExport = require('./db'); //eslint-disable-line no-unused-vars
