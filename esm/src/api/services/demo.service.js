@@ -1,15 +1,11 @@
-import { DemoModel as Demo } from "../models/demo.model";
+import { DemoModel as Demo } from '../models/demo.model';
 
-/*======================
-  operations for /demo
-=======================*/
-
-const getDemoItemsService = async () => {
-  const query = await Demo.find().select("_id name age").exec();
+export const getDemoItemsService = async () => {
+  const query = await Demo.find().select('_id name age').exec();
   return query;
 };
 
-const createDemoItemService = async (requestBody) => {
+export const createDemoItemService = async (requestBody) => {
   let demo = new Demo({
     name: requestBody.name,
     age: requestBody.age,
@@ -19,21 +15,17 @@ const createDemoItemService = async (requestBody) => {
   return save;
 };
 
-/*=============================
-  operations for /demo/demoId
-==============================*/
-
-const getOneDemoItemService = async (paramsId) => {
-  const query = Demo.findById(paramsId).select("_id name age").exec();
+export const getOneDemoItemService = async (paramsId) => {
+  const query = Demo.findById(paramsId).select('_id name age').exec();
   return query;
 };
 
-const deleteDemoItemService = async (paramsId) => {
+export const deleteDemoItemService = async (paramsId) => {
   const query = await Demo.deleteOne({ _id: paramsId }).exec();
   return query;
 };
 
-const updateOneDemoItemPropertyValueService = async (paramsId, requestBody) => {
+export const updateOneDemoItemPropertyValueService = async (paramsId, requestBody) => {
   const updateOps = {};
   for (const ops of requestBody) {
     updateOps[ops.propName] = ops.value;
@@ -45,7 +37,7 @@ const updateOneDemoItemPropertyValueService = async (paramsId, requestBody) => {
   return query;
 };
 
-const updateDemoItemPropertyValuesService = async (paramsId, requestBody) => {
+export const updateDemoItemPropertyValuesService = async (paramsId, requestBody) => {
   let resetItem = {
     name: requestBody.name,
     age: requestBody.age,
@@ -56,13 +48,4 @@ const updateDemoItemPropertyValuesService = async (paramsId, requestBody) => {
     { new: true }
   ).exec();
   return query;
-};
-
-export {
-  getDemoItemsService,
-  createDemoItemService,
-  getOneDemoItemService,
-  deleteDemoItemService,
-  updateOneDemoItemPropertyValueService,
-  updateDemoItemPropertyValuesService,
 };
