@@ -11,7 +11,6 @@ export const createDemoItemService = async (requestBody: DocumentDefinition<Demo
     name: requestBody.name,
     age: requestBody.age
   });
-
   const save = await demo.save();
   return save;
 }
@@ -26,33 +25,20 @@ export const deleteDemoItemService = async (paramsId: string) => {
   return query;
 }
 
-export const updateOneDemoItemPropertyValueService = async (
-  paramsId: string,
-  requestBody: DocumentDefinition<DemoDocument>
-) => {
-  const updateOps: DocumentDefinition<DemoDocument> = {};
+export const updateOneDemoItemPropertyValueService = async (paramsId: string, requestBody: { propName: string, value: string }[]) => {
+  let updateOps: Record<string, string> = {};
   for (const ops of requestBody) {
     updateOps[ops.propName] = ops.value;
   }
-  const query = await Demo.updateOne(
-    { _id: paramsId },
-    { $set: updateOps }
-  ).exec();
+  const query = await Demo.updateOne({ _id: paramsId }, { $set: updateOps }).exec();
   return query;
 };
 
-export const updateDemoItemPropertyValuesService = async (
-  paramsId: string,
-  requestBody: DocumentDefinition<DemoDocument>
-) => {
+export const updateDemoItemPropertyValuesService = async (paramsId: string, requestBody: DocumentDefinition<DemoDocument>) => {
   let resetItem = {
     name: requestBody.name,
     age: requestBody.age,
   };
-  const query = await Demo.findByIdAndUpdate(
-    paramsId,
-    { $set: resetItem },
-    { new: true }
-  ).exec();
+  const query = await Demo.findByIdAndUpdate(paramsId, { $set: resetItem }, { new: true }).exec();
   return query;
 };
