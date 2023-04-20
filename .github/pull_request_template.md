@@ -7,8 +7,6 @@
 
 **Testing checklist**
 
-- [ ]  Only pull request template is added to the API template repo.
-- [ ] The pull request contains the exact content of the one in the node-mongo repo. No changes or modifications made.
-- [ ] I certify that I ran my checklist
+Replace this text with the testing checklist from the issue this pull request fixes.
 
 Ping @code-collabo/node-mongo
