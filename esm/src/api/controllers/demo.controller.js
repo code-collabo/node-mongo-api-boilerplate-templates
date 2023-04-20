@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import chalk from 'chalk';
 import {
   getDemoItemsService,
   createDemoItemService,
@@ -8,36 +8,40 @@ import {
   updateDemoItemPropertyValuesService,
 } from '../services/demo.service';
 
-const routeName = 'demo';
-const item = `${routeName}-item`;
+let routeName = 'demo';
+let item = `${routeName}-item`;
 
-export const getDemoItemsController = async (req: Request, res: Response) => {
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+
+const getDemoItemsController = async (req, res) => {
   try {
     let docs = await getDemoItemsService();
     const response = {
       count: docs.length,
-      items: docs.map(doc => {
+      items: docs.map((doc) => {
         return {
           _id: doc._id,
           name: doc.name,
           age: doc.age,
           request: {
             type: 'GET',
-            url: `http://localhost:3000/${routeName}/${doc._id}`
-          }
-        }
-      })
+            url: `http://localhost:3000/${routeName}/${doc._id}`,
+          },
+        };
+      }),
     };
     res.status(200).json(response);
-    return response;
+    console.log( chalk.greenBright(`\nGET request successful! \n\nRunning at http://localhost:3000/${routeName}/\n`) );
   } catch (err) {
     res.status(500).json({
-      error: `${err}`
+      error: `${err}`,
     });
+    console.log( chalk.redBright(`\nError retriving ${item}s: ${err}\n`) );
   }
-}
+};
 
-export const createDemoItemController = async (req: Request, res: Response) => {
+const createDemoItemController = async (req, res) => {
   try {
     let doc = await createDemoItemService(req.body);
     res.status(201).json({
@@ -48,19 +52,20 @@ export const createDemoItemController = async (req: Request, res: Response) => {
         age: doc.age,
         request: {
           type: 'GET',
-          url: `http://localhost:3000/${routeName}/${doc._id}`
-        }
-      }
+          url: `http://localhost:3000/${routeName}/${doc._id}`,
+        },
+      },
     });
-    return doc;
+    console.log( chalk.greenBright(`\n${item} CREATED successfully! \n\nCreated ${item} url: http://localhost:3000/${routeName}/${doc._id}\n`) );
   } catch (err) {
     res.status(500).json({
-      error: `${err}`
+      error: `${err}`,
     });
+    console.log( chalk.redBright(`\nError saving ${item}: ${err}\n`) );
   }
-}
+};
 
-export const getOneDemoItemController = async (req: Request, res: Response, next: NextFunction) => {
+const getOneDemoItemController = async (req, res, next) => {
   try {
     let doc = await getOneDemoItemService(req.params.demoId);
     if (doc) {
@@ -71,26 +76,29 @@ export const getOneDemoItemController = async (req: Request, res: Response, next
         request: {
           type: 'GET',
           description: `Url link to all ${item}s`,
-          url: `http://localhost:3000/${routeName}/`
-        }
+          url: `http://localhost:3000/${routeName}/`,
+        },
       });
-      return doc;
+      console.log( chalk.greenBright(`\nGET request successful! \n\n${item} url: http://localhost:3000/${routeName}/${doc._id}\n`) );
     } else {
+      console.log( chalk.redBright('\nNo record found for provided ID\n') );
       return res.status(404).json({
-        message: 'No record found for provided ID'
+        message: 'No record found for provided ID',
       });
     }
   } catch (err) {
     res.status(500).json({
       message: 'Invalid ID',
-      error: `${err}`
+      error: `${err}`,
     });
+    console.log( chalk.redBright(`\nError retriving ${item}: ${err}\n`) );
   }
-}
+};
 
-export const deleteDemoItemController = async (req: Request, res: Response, next: NextFunction) => {
+const deleteDemoItemController = async (req, res, next) => {
   try {
     let doc = await deleteDemoItemService(req.params.demoId);
+    console.log( chalk.greenBright(`\n${item} DELETED successfully!\n`) );
     res.status(200).json({
       message: `${item} deleted successfully!`,
       request: {
@@ -99,22 +107,24 @@ export const deleteDemoItemController = async (req: Request, res: Response, next
         url: `http://localhost:3000/${item}/`,
         body: {
           name: 'String',
-          age: 'Number'
-        }
-      }
+          age: 'Number',
+        },
+      },
     });
   } catch (err) {
     res.status(500).json({
       message: `Error deleting ${item}`,
-      error: `${err}`
+      error: `${err}`,
     });
+    console.log( chalk.redBright(`\nError deleting ${item}: ${err}\n`) );
   }
 };
 
-export const updateOneDemoItemPropertyValueController = async (req: Request, res: Response, next: NextFunction) => {
+const updateOneDemoItemPropertyValueController = async (req, res, next) => {
   try {
     const id = req.params.demoId;
     let doc = await updateOneDemoItemPropertyValueService(id, req.body);
+    console.log( chalk.greenBright(`\nPATCH request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
     return res.status(200).json({
       message: 'Patch request successful!',
       request: {
@@ -128,13 +138,15 @@ export const updateOneDemoItemPropertyValueController = async (req: Request, res
       message: `Error updating ${item} property & value`,
       error: `${err}`,
     });
+    console.log( chalk.redBright(`\nError updating ${item} property & value: ${err}\n`) );
   }
 };
 
-export const updateDemoItemPropertyValuesController = async (req: Request, res: Response) => {
+const updateDemoItemPropertyValuesController = async (req, res) => {
   try {
     const id = req.params.id;
     let doc = await updateDemoItemPropertyValuesService(id, req.body);
+    console.log( chalk.greenBright(`\nPUT request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
     return res.status(200).json({
       message: `Put request successful!`,
       request: {
@@ -148,5 +160,15 @@ export const updateDemoItemPropertyValuesController = async (req: Request, res: 
       message: `Error updating ${item}`,
       error: `${err}`,
     });
+    console.log( chalk.redBright(`\nError updating ${item}: ${err}\n`) );
   }
+};
+
+export {
+  getDemoItemsController,
+  createDemoItemController,
+  getOneDemoItemController,
+  deleteDemoItemController,
+  updateOneDemoItemPropertyValueController,
+  updateDemoItemPropertyValuesController,
 };

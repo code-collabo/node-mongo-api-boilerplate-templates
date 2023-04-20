@@ -1,4 +1,4 @@
-import express, { IRouter } from 'express';
+import express from 'express';
 import {
   getDemoItemsController,
   createDemoItemController,
@@ -8,7 +8,7 @@ import {
   updateDemoItemPropertyValuesController,
 } from '../controllers/demo.controller';
 
-let router: IRouter = express.Router();
+let router = express.Router();
 
 router.get('/', getDemoItemsController);
 router.post('/', createDemoItemController);

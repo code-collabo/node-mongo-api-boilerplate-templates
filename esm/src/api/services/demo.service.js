@@ -1,32 +1,31 @@
-import { DocumentDefinition } from 'mongoose';
-import { DemoDocument, DemoModel as Demo } from '../models/demo.model';
+import { DemoModel as Demo } from '../models/demo.model';
 
 export const getDemoItemsService = async () => {
   const query = await Demo.find().select('_id name age').exec();
   return query;
-}
+};
 
-export const createDemoItemService = async (requestBody: DocumentDefinition<DemoDocument>) => {
+export const createDemoItemService = async (requestBody) => {
   let demo = new Demo({
     name: requestBody.name,
-    age: requestBody.age
+    age: requestBody.age,
   });
   const save = await demo.save();
   return save;
-}
+};
 
-export const getOneDemoItemService = async (paramsId: string) => {
+export const getOneDemoItemService = async (paramsId) => {
   const query = Demo.findById(paramsId).select('_id name age').exec();
   return query;
-}
+};
 
-export const deleteDemoItemService = async (paramsId: string) => {
+export const deleteDemoItemService = async (paramsId) => {
   const query = await Demo.deleteOne({ _id: paramsId }).exec();
   return query;
-}
+};
 
-export const updateOneDemoItemPropertyValueService = async (paramsId: string, requestBody: { propName: string, value: string }[]) => {
-  let updateOps: Record<string, string> = {};
+export const updateOneDemoItemPropertyValueService = async (paramsId, requestBody) => {
+  const updateOps = {};
   for (const ops of requestBody) {
     updateOps[ops.propName] = ops.value;
   }
@@ -34,7 +33,7 @@ export const updateOneDemoItemPropertyValueService = async (paramsId: string, re
   return query;
 };
 
-export const updateDemoItemPropertyValuesService = async (paramsId: string, requestBody: DocumentDefinition<DemoDocument>) => {
+export const updateDemoItemPropertyValuesService = async (paramsId, requestBody) => {
   let resetItem = {
     name: requestBody.name,
     age: requestBody.age,
