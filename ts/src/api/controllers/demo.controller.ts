@@ -133,7 +133,7 @@ export const updateOneDemoItemPropertyValueController = async (req: Request, res
 
 export const updateDemoItemPropertyValuesController = async (req: Request, res: Response) => {
   try {
-    const id = req.params.demoId;
+    const id = req.params.id;
     let doc = await updateDemoItemPropertyValuesService(id, req.body);
     return res.status(200).json({
       message: `Put request successful!`,

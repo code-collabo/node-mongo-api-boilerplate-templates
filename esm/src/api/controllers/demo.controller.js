@@ -144,7 +144,7 @@ const updateOneDemoItemPropertyValueController = async (req, res, next) => {
 
 const updateDemoItemPropertyValuesController = async (req, res) => {
   try {
-    const id = req.params.demoId;
+    const id = req.params.id;
     let doc = await updateDemoItemPropertyValuesService(id, req.body);
     console.log( chalk.greenBright(`\nPUT request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
     return res.status(200).json({
