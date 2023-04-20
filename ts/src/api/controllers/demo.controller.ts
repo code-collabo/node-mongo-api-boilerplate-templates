@@ -1,8 +1,4 @@
-import {
-  NextFunction,
-  Request,
-  Response
-} from 'express';
+import { NextFunction, Request, Response } from 'express';
 import {
   getDemoItemsService,
   createDemoItemService,
@@ -12,8 +8,8 @@ import {
   updateDemoItemPropertyValuesService,
 } from '../services/demo.service';
 
-let routeName = 'demo';
-let item = `${routeName}-item`;
+const routeName = 'demo';
+const item = `${routeName}-item`;
 
 export const getDemoItemsController = async (req: Request, res: Response) => {
   try {
@@ -115,22 +111,16 @@ export const deleteDemoItemController = async (req: Request, res: Response, next
   }
 };
 
-export const updateOneDemoItemPropertyValueController = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const updateOneDemoItemPropertyValueController = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    let doc = await updateOneDemoItemPropertyValueService(
-      req.params.demoId,
-      req.body
-    );
+    const id = req.params.demoId;
+    let doc = await updateOneDemoItemPropertyValueService(id, req.body);
     return res.status(200).json({
       message: 'Patch request successful!',
       request: {
         type: 'GET',
         description: `Url link to updated ${item}`,
-        url: `http://localhost:3000/${routeName}/${doc._id}`,
+        url: `http://localhost:3000/${routeName}/${id}`,
       },
     });
   } catch (err) {
@@ -141,21 +131,16 @@ export const updateOneDemoItemPropertyValueController = async (
   }
 };
 
-export const updateDemoItemPropertyValuesController = async (
-  req: Request,
-  res: Response
-) => {
+export const updateDemoItemPropertyValuesController = async (req: Request, res: Response) => {
   try {
-    let doc = await updateDemoItemPropertyValuesService(
-      req.params.id,
-      req.body
-    );
+    const id = req.params.demoId;
+    let doc = await updateDemoItemPropertyValuesService(id, req.body);
     return res.status(200).json({
       message: `Put request successful!`,
       request: {
         type: 'GET',
         description: `Url link to updated ${item}`,
-        url: `http://localhost:3000/${routeName}/${doc._id}`,
+        url: `http://localhost:3000/${routeName}/${id}`,
       },
     });
   } catch (err) {
