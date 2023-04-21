@@ -13,7 +13,7 @@ const item = `${routeName}-item`;
 
 export const getDemoItemsController = async (req: Request, res: Response) => {
   try {
-    const docs = await getDemoItemsService();
+    let docs = await getDemoItemsService();
     const response = {
       count: docs.length,
       items: docs.map(doc => {
@@ -39,7 +39,7 @@ export const getDemoItemsController = async (req: Request, res: Response) => {
 
 export const createDemoItemController = async (req: Request, res: Response) => {
   try {
-    const doc = await createDemoItemService(req.body);
+    let doc = await createDemoItemService(req.body);
     res.status(201).json({
       message: `${item} created successfully!`,
       newItem: {
@@ -62,7 +62,7 @@ export const createDemoItemController = async (req: Request, res: Response) => {
 
 export const getOneDemoItemController = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const doc = await getOneDemoItemService(req.params.demoId);
+    let doc = await getOneDemoItemService(req.params.demoId);
     if (doc) {
       res.status(200).json({
         _id: doc._id,
@@ -90,7 +90,7 @@ export const getOneDemoItemController = async (req: Request, res: Response, next
 
 export const deleteDemoItemController = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const doc = await deleteDemoItemService(req.params.demoId);
+    let doc = await deleteDemoItemService(req.params.demoId);
     res.status(200).json({
       message: `${item} deleted successfully!`,
       request: {
@@ -114,7 +114,7 @@ export const deleteDemoItemController = async (req: Request, res: Response, next
 export const updateOneDemoItemPropertyValueController = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const id = req.params.demoId;
-    const doc = await updateOneDemoItemPropertyValueService(id, req.body);
+    let doc = await updateOneDemoItemPropertyValueService(id, req.body);
     return res.status(200).json({
       message: 'Patch request successful!',
       request: {
@@ -134,7 +134,7 @@ export const updateOneDemoItemPropertyValueController = async (req: Request, res
 export const updateDemoItemPropertyValuesController = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
-    const doc = await updateDemoItemPropertyValuesService(id, req.body);
+    let doc = await updateDemoItemPropertyValuesService(id, req.body);
     return res.status(200).json({
       message: `Put request successful!`,
       request: {

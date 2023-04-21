@@ -8,7 +8,7 @@ import {
   updateDemoItemPropertyValuesController,
 } from '../controllers/demo.controller';
 
-const router: IRouter = express.Router();
+let router: IRouter = express.Router();
 
 router.get('/', getDemoItemsController);
 router.post('/', createDemoItemController);

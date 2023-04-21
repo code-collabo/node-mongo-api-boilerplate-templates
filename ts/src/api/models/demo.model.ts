@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 
-export type DemoDocument = {
+export interface DemoDocument extends mongoose.Document  {
   name: string;
   age: number;
-} & mongoose.Document
+}
 
 const collectionName = 'demo';
 
