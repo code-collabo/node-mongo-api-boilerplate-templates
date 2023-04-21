@@ -21,7 +21,7 @@ app.use('/', appRouter);
 app.use('/demo', demoRouter);
 //==========================
 
-interface Error  {
+interface Error {
   status?: number;
   message: string;
 }

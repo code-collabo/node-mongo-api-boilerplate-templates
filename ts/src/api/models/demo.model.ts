@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export interface DemoDocument extends mongoose.Document  {
+export interface DemoDocument extends mongoose.Document {
   name: string;
   age: number;
 }
