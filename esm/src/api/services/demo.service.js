@@ -6,7 +6,7 @@ export const getDemoItemsService = async () => {
 };
 
 export const createDemoItemService = async (requestBody) => {
-  let demo = new Demo({
+  const demo = new Demo({
     name: requestBody.name,
     age: requestBody.age,
   });
@@ -34,7 +34,7 @@ export const updateOneDemoItemPropertyValueService = async (paramsId, requestBod
 };
 
 export const updateDemoItemPropertyValuesService = async (paramsId, requestBody) => {
-  let resetItem = {
+  const resetItem = {
     name: requestBody.name,
     age: requestBody.age,
   };

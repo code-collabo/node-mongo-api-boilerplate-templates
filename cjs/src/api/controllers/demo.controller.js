@@ -1,4 +1,4 @@
-let chalk = require('chalk');
+const chalk = require('chalk');
 const {
   getDemoItemsService,
   createDemoItemService,
@@ -8,8 +8,8 @@ const {
   updateDemoItemPropertyValuesService,
 } = require('../services/demo.service');
 
-let routeName = 'demo';
-let item = `${routeName}-item`;
+const routeName = 'demo';
+const item = `${routeName}-item`;
 
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
