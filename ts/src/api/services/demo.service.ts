@@ -26,7 +26,7 @@ export const deleteDemoItemService = async (paramsId: string) => {
 }
 
 export const updateOneDemoItemPropertyValueService = async (paramsId: string, requestBody: { propName: string, value: string }[]) => {
-  let updateOps: Record<string, string> = {};
+  const updateOps: Record<string, string> = {};
   for (const ops of requestBody) {
     updateOps[ops.propName] = ops.value;
   }
@@ -35,7 +35,7 @@ export const updateOneDemoItemPropertyValueService = async (paramsId: string, re
 };
 
 export const updateDemoItemPropertyValuesService = async (paramsId: string, requestBody: DocumentDefinition<DemoDocument>) => {
-  let resetItem = {
+  const resetItem = {
     name: requestBody.name,
     age: requestBody.age,
   };

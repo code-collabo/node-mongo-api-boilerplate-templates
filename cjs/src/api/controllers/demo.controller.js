@@ -1,4 +1,4 @@
-let chalk = require('chalk');
+const chalk = require('chalk');
 const {
   getDemoItemsService,
   createDemoItemService,
@@ -8,11 +8,10 @@ const {
   updateDemoItemPropertyValuesService,
 } = require('../services/demo.service');
 
-let routeName = 'demo';
-let item = `${routeName}-item`;
+const routeName = 'demo';
+const item = `${routeName}-item`;
 
 /* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 
 const getDemoItemsController = (req, res) => {
   getDemoItemsService()
@@ -67,7 +66,7 @@ const createDemoItemController = (req, res) => {
   });
 };
 
-const getOneDemoItemController = (req, res, next) => {
+const getOneDemoItemController = (req, res) => {
   const id = req.params.demoId;
   getOneDemoItemService(id)
   .then((doc) => {
@@ -99,10 +98,10 @@ const getOneDemoItemController = (req, res, next) => {
   });
 };
 
-const deleteDemoItemController = (req, res, next) => {
+const deleteDemoItemController = (req, res) => {
   const id = req.params.demoId;
   deleteDemoItemService(id)
-  .then((doc) => {
+  .then(() => {
     console.log( chalk.greenBright(`\n${item} DELETED successfully!\n`) );
     res.status(200).json({
       message: `${item} deleted successfully!`,
@@ -126,7 +125,7 @@ const deleteDemoItemController = (req, res, next) => {
   });
 };
 
-const updateOneDemoItemPropertyValueController = (req, res, next) => {
+const updateOneDemoItemPropertyValueController = (req, res) => {
   const id = req.params.demoId;
   updateOneDemoItemPropertyValueService(id, req.body)
   .then(() => {
@@ -152,7 +151,7 @@ const updateOneDemoItemPropertyValueController = (req, res, next) => {
 const updateDemoItemPropertyValuesController = (req, res) => {
   const id = req.params.id;
   updateDemoItemPropertyValuesService(id, req.body)
-  .then((doc) => {
+  .then(() => {
     console.log( chalk.greenBright(`\nPUT request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
     return res.status(200).json({
       message: `Put request successful!`,

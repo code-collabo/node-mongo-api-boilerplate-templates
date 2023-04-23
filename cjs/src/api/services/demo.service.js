@@ -1,4 +1,4 @@
-let Demo = require('../models/demo.model');
+const Demo = require('../models/demo.model');
 
 /* eslint-disable no-extra-semi */ // Note: only cjs api template needs this particular eslint comment
 
@@ -8,7 +8,7 @@ function getDemoItemsService () {
 };
 
 function createDemoItemService (req) {
-  let demo = new Demo({
+  const demo = new Demo({
     name: req.body.name,
     age: req.body.age,
   });
@@ -35,7 +35,7 @@ function updateOneDemoItemPropertyValueService (paramsId, requestBody) {
 };
 
 function updateDemoItemPropertyValuesService (paramsId, requestBody) {
-  let resetItem = {
+  const resetItem = {
     name: requestBody.name,
     age: requestBody.age,
   };

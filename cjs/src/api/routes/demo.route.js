@@ -8,7 +8,7 @@ const {
   updateDemoItemPropertyValuesController,
 } = require('../controllers/demo.controller');
 
-let router = express.Router();
+const router = express.Router();
 
 router.get('/', getDemoItemsController);
 router.post('/', createDemoItemController);

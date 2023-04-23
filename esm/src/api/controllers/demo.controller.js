@@ -8,15 +8,14 @@ import {
   updateDemoItemPropertyValuesService,
 } from '../services/demo.service';
 
-let routeName = 'demo';
-let item = `${routeName}-item`;
+const routeName = 'demo';
+const item = `${routeName}-item`;
 
 /* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 
 const getDemoItemsController = async (req, res) => {
   try {
-    let docs = await getDemoItemsService();
+    const docs = await getDemoItemsService();
     const response = {
       count: docs.length,
       items: docs.map((doc) => {
@@ -43,7 +42,7 @@ const getDemoItemsController = async (req, res) => {
 
 const createDemoItemController = async (req, res) => {
   try {
-    let doc = await createDemoItemService(req.body);
+    const doc = await createDemoItemService(req.body);
     res.status(201).json({
       message: `${item} created successfully!`,
       newItem: {
@@ -65,9 +64,9 @@ const createDemoItemController = async (req, res) => {
   }
 };
 
-const getOneDemoItemController = async (req, res, next) => {
+const getOneDemoItemController = async (req, res) => {
   try {
-    let doc = await getOneDemoItemService(req.params.demoId);
+    const doc = await getOneDemoItemService(req.params.demoId);
     if (doc) {
       res.status(200).json({
         _id: doc._id,
@@ -95,9 +94,9 @@ const getOneDemoItemController = async (req, res, next) => {
   }
 };
 
-const deleteDemoItemController = async (req, res, next) => {
+const deleteDemoItemController = async (req, res) => {
   try {
-    let doc = await deleteDemoItemService(req.params.demoId);
+    await deleteDemoItemService(req.params.demoId);
     console.log( chalk.greenBright(`\n${item} DELETED successfully!\n`) );
     res.status(200).json({
       message: `${item} deleted successfully!`,
@@ -120,10 +119,10 @@ const deleteDemoItemController = async (req, res, next) => {
   }
 };
 
-const updateOneDemoItemPropertyValueController = async (req, res, next) => {
+const updateOneDemoItemPropertyValueController = async (req, res) => {
   try {
     const id = req.params.demoId;
-    let doc = await updateOneDemoItemPropertyValueService(id, req.body);
+    await updateOneDemoItemPropertyValueService(id, req.body);
     console.log( chalk.greenBright(`\nPATCH request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
     return res.status(200).json({
       message: 'Patch request successful!',
@@ -145,7 +144,7 @@ const updateOneDemoItemPropertyValueController = async (req, res, next) => {
 const updateDemoItemPropertyValuesController = async (req, res) => {
   try {
     const id = req.params.id;
-    let doc = await updateDemoItemPropertyValuesService(id, req.body);
+    await updateDemoItemPropertyValuesService(id, req.body);
     console.log( chalk.greenBright(`\nPUT request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
     return res.status(200).json({
       message: `Put request successful!`,
