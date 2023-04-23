@@ -6,8 +6,8 @@ export const getDemoItemsService = async () => {
   return query;
 }
 
-export const createDemoItemService = async (requestBody: DocumentDefinition<DemoDocument>) => {
-  let demo = new Demo({
+export const createDemoItemService = async (requestBody: DocumentDefinition<DemoDocument>): Promise<DemoDocument> => {
+  const demo = new Demo({
     name: requestBody.name,
     age: requestBody.age
   });

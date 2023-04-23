@@ -5,10 +5,11 @@ dotenv.config();
 
 async function mongooseAtlasConnect() {
   try {
-    mongoose.connect(`${process.env.MONGODB_ATLAS_URI}`);
+   await mongoose.connect(`${process.env.MONGODB_ATLAS_URI}`);
     console.log('\nConnection to mongoDB ATLAS successful!!!');
   } catch (err) {
     console.log(`\nError in DB connection: ${err.message} \n`);
+    // process.exit(1);
   }
 }
 

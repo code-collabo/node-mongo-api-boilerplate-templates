@@ -13,7 +13,7 @@ const item = `${routeName}-item`;
 
 export const getDemoItemsController = async (req: Request, res: Response) => {
   try {
-    let docs = await getDemoItemsService();
+    const docs = await getDemoItemsService();
     const response = {
       count: docs.length,
       items: docs.map(doc => {
@@ -28,8 +28,7 @@ export const getDemoItemsController = async (req: Request, res: Response) => {
         }
       })
     };
-    res.status(200).json(response);
-    return response;
+    return res.status(200).json(response);
   } catch (err) {
     res.status(500).json({
       error: `${err}`
@@ -39,8 +38,8 @@ export const getDemoItemsController = async (req: Request, res: Response) => {
 
 export const createDemoItemController = async (req: Request, res: Response) => {
   try {
-    let doc = await createDemoItemService(req.body);
-    res.status(201).json({
+    const doc = await createDemoItemService(req.body);
+    return res.status(201).json({
       message: `${item} created successfully!`,
       newItem: {
         _id: doc._id,
@@ -52,7 +51,6 @@ export const createDemoItemController = async (req: Request, res: Response) => {
         }
       }
     });
-    return doc;
   } catch (err) {
     res.status(500).json({
       error: `${err}`
@@ -62,9 +60,9 @@ export const createDemoItemController = async (req: Request, res: Response) => {
 
 export const getOneDemoItemController = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    let doc = await getOneDemoItemService(req.params.demoId);
+    const doc = await getOneDemoItemService(req.params.demoId);
     if (doc) {
-      res.status(200).json({
+      return res.status(200).json({
         _id: doc._id,
         name: doc.name,
         age: doc.age,
@@ -74,7 +72,6 @@ export const getOneDemoItemController = async (req: Request, res: Response, next
           url: `http://localhost:3000/${routeName}/`
         }
       });
-      return doc;
     } else {
       return res.status(404).json({
         message: 'No record found for provided ID'
