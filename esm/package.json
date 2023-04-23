@@ -1,7 +1,7 @@
 {
-  "name": "node-mongo-esm-kit",
+  "name": "node-mongo-api-boilerplate-template-esm",
   "version": "1.0.0",
-  "description": "Node js, express & mongoDB boilerplate template - the ES modules template.",
+  "description": "@code-collabo node-mongo API boilerplate template - es module",
   "main": "src/server.js",
   "scripts": {
     "prestart": "babel-node src/startMessage.js",
