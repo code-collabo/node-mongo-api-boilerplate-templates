@@ -1,13 +1,18 @@
 import mongooseAtlasConnect from './db.atlas.connect';
 import { app as app } from './app';
 
+/* eslint-disable no-console */
+
 const port = process.env.PORT || 3000;
 
-app.listen(port, async () => {
+export const server = (serverPort: number | string): void => {
   try {
-    console.log(`\nServer running at ${process.env.API_HOST_URL}`);
-    await mongooseAtlasConnect();
+    console.log(`\nServer running at ${serverPort}`);
   } catch (err) {
-    console.log(err);
+    console.log({ err });
   }
+}
+
+app.listen(port, () => {
+  mongooseAtlasConnect(port);
 });
