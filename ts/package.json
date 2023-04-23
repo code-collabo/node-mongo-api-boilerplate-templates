@@ -1,7 +1,7 @@
 {
   "name": "node-mongo-api-boilerplate-template-ts",
   "version": "1.0.0",
-  "description": "Typscript manual download option for @code-collabo's node-mongo API boilerplate template",
+  "description": "@code-collabo node-mongo API boilerplate template - typescript",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",

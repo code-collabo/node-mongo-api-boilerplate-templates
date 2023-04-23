@@ -1,7 +1,7 @@
 {
-  "name": "node-mongo-cjs-kit",
+  "name": "node-mongo-api-boilerplate-template-cjs",
   "version": "1.0.0",
-  "description": "Node js, express & mongoDB boilerplate template - the common js template.",
+  "description": "@code-collabo node-mongo API boilerplate template - common js",
   "main": "src/server.js",
   "scripts": {
     "prestart": "node src/startMessage.js",
