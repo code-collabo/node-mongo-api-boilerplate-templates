@@ -14,7 +14,7 @@ app.use(express.urlencoded({
   extended: false
 }));
 app.use(express.json());
-app.use(cors({ origin: `http://localhost:${process.env.CLIENT_APP_PORT}` }));
+app.use(cors({ origin: [`http://localhost:${process.env.CLIENT_APP_PORT}`, `${process.env.CLIENT_APP_URL}`] }));
 
 //====== Use Routers =======
 app.use('/', appRouter);
@@ -32,7 +32,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next(err);
 });
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, req: Request, res: Response) => {
   res.status(err.status || 500);
   res.json({
     error: {
