@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import {
   getDemoItemsService,
   createDemoItemService,
@@ -60,7 +60,7 @@ export const createDemoItemController = async (req: Request, res: Response) => {
   }
 }
 
-export const getOneDemoItemController = async (req: Request, res: Response, next: NextFunction) => {
+export const getOneDemoItemController = async (req: Request, res: Response) => {
   try {
     const doc = await getOneDemoItemService(req.params.demoId);
     if (doc) {
@@ -88,9 +88,9 @@ export const getOneDemoItemController = async (req: Request, res: Response, next
   }
 }
 
-export const deleteDemoItemController = async (req: Request, res: Response, next: NextFunction) => {
+export const deleteDemoItemController = async (req: Request, res: Response) => {
   try {
-    const doc = await deleteDemoItemService(req.params.demoId);
+    await deleteDemoItemService(req.params.demoId);
     res.status(200).json({
       message: `${item} deleted successfully!`,
       request: {
@@ -111,10 +111,10 @@ export const deleteDemoItemController = async (req: Request, res: Response, next
   }
 };
 
-export const updateOneDemoItemPropertyValueController = async (req: Request, res: Response, next: NextFunction) => {
+export const updateOneDemoItemPropertyValueController = async (req: Request, res: Response) => {
   try {
     const id = req.params.demoId;
-    const doc = await updateOneDemoItemPropertyValueService(id, req.body);
+    await updateOneDemoItemPropertyValueService(id, req.body);
     return res.status(200).json({
       message: 'Patch request successful!',
       request: {
@@ -134,7 +134,7 @@ export const updateOneDemoItemPropertyValueController = async (req: Request, res
 export const updateDemoItemPropertyValuesController = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
-    const doc = await updateDemoItemPropertyValuesService(id, req.body);
+    await updateDemoItemPropertyValuesService(id, req.body);
     return res.status(200).json({
       message: `Put request successful!`,
       request: {

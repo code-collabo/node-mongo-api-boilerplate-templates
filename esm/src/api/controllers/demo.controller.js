@@ -12,7 +12,6 @@ const routeName = 'demo';
 const item = `${routeName}-item`;
 
 /* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 
 const getDemoItemsController = async (req, res) => {
   try {
@@ -65,7 +64,7 @@ const createDemoItemController = async (req, res) => {
   }
 };
 
-const getOneDemoItemController = async (req, res, next) => {
+const getOneDemoItemController = async (req, res) => {
   try {
     const doc = await getOneDemoItemService(req.params.demoId);
     if (doc) {
@@ -95,9 +94,9 @@ const getOneDemoItemController = async (req, res, next) => {
   }
 };
 
-const deleteDemoItemController = async (req, res, next) => {
+const deleteDemoItemController = async (req, res) => {
   try {
-    const doc = await deleteDemoItemService(req.params.demoId);
+    await deleteDemoItemService(req.params.demoId);
     console.log( chalk.greenBright(`\n${item} DELETED successfully!\n`) );
     res.status(200).json({
       message: `${item} deleted successfully!`,
@@ -120,10 +119,10 @@ const deleteDemoItemController = async (req, res, next) => {
   }
 };
 
-const updateOneDemoItemPropertyValueController = async (req, res, next) => {
+const updateOneDemoItemPropertyValueController = async (req, res) => {
   try {
     const id = req.params.demoId;
-    const doc = await updateOneDemoItemPropertyValueService(id, req.body);
+    await updateOneDemoItemPropertyValueService(id, req.body);
     console.log( chalk.greenBright(`\nPATCH request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
     return res.status(200).json({
       message: 'Patch request successful!',
@@ -145,7 +144,7 @@ const updateOneDemoItemPropertyValueController = async (req, res, next) => {
 const updateDemoItemPropertyValuesController = async (req, res) => {
   try {
     const id = req.params.id;
-    const doc = await updateDemoItemPropertyValuesService(id, req.body);
+    await updateDemoItemPropertyValuesService(id, req.body);
     console.log( chalk.greenBright(`\nPUT request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
     return res.status(200).json({
       message: `Put request successful!`,
