@@ -12,6 +12,6 @@ const DemoSchema = new mongoose.Schema({
   age: { type: Number, required: true }
 });
 
-const DemoModel = mongoose.model(collectionName, DemoSchema, collectionName); //declare collection name a second time to prevent mongoose from pluralizing or adding 's' to the collection name
+const DemoModel = mongoose.model<DemoDocument>(collectionName, DemoSchema, collectionName); //declare collection name a second time to prevent mongoose from pluralizing or adding 's' to the collection name
 
 export { DemoModel };
