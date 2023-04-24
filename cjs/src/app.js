@@ -1,14 +1,11 @@
 const express = require('express');
+const dotenv = require('dotenv');
 const morgan = require('morgan');
 const cors = require('cors');
 let appRouter = require('./api/routes/app.route');
 let demoRouter = require('./api/routes/demo.route');
 
-//===== Installed mongoDB's db =======
-const mongooseModuleExport = require('./db'); //eslint-disable-line no-unused-vars
-
-//===== MongoDB ATLAS db =======
-//const mongooseModuleExportAtlas = require('./atlas/db'); //eslint-disable-line no-unused-vars
+dotenv.config();
 
 const app = express();
 
@@ -17,7 +14,7 @@ app.use(express.urlencoded({
   extended: false
 }));
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:4200' }));
+app.use(cors({ origin: [`http://localhost:${process.env.CLIENT_APP_PORT}`, `${process.env.CLIENT_APP_URL}`] }));
 
 //====== Use Routers =======
 app.use('/', appRouter);
