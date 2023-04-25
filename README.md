@@ -17,7 +17,7 @@ npm install
 Start dev server for connection to mongoDB (local):
 
 ````
-npm run dev
+npm run dev:local
 ````
 
 Or, start dev server for connection to mongoDB (Atlas):

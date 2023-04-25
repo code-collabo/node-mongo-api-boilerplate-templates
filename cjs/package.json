@@ -4,7 +4,7 @@
   "description": "@code-collabo node-mongo API boilerplate template - common js",
   "main": "src/server.[atlas/local].js",
   "scripts": {
-    "dev": "nodemon --exec node src/server.js",
+    "dev:local": "nodemon --exec node src/server.local.js",
     "dev:atlas": "nodemon --exec node src/server.atlas.js",
     "lint": "esw src --color",
     "lint:watch": "npm run lint -- --watch"
