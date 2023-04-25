@@ -2,7 +2,7 @@
   "name": "node-mongo-api-boilerplate-template-esm",
   "version": "1.0.0",
   "description": "@code-collabo node-mongo API boilerplate template - es module",
-  "main": "src/server.js",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec babel-node src/server.js",
     "dev:atlas": "nodemon --exec babel-node src/server.atlas.js",
