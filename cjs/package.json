@@ -2,7 +2,7 @@
   "name": "node-mongo-api-boilerplate-template-cjs",
   "version": "1.0.0",
   "description": "@code-collabo node-mongo API boilerplate template - common js",
-  "main": "index.js",
+  "main": "src/server.[atlas/local].js",
   "scripts": {
     "dev": "nodemon --exec node src/server.js",
     "dev:atlas": "nodemon --exec node src/server.atlas.js",

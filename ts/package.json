@@ -2,13 +2,12 @@
   "name": "node-mongo-api-boilerplate-template-ts",
   "version": "1.0.0",
   "description": "@code-collabo node-mongo API boilerplate template - typescript",
-  "main": "index.js",
+  "main": "src/server.[atlas/local].ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "dev:atlas": "ts-node-dev --respawn --transpile-only src/server.atlas.ts",
     "lint": "esw src --ext .ts --color",
-    "lint:watch": "npm run lint -- --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint:watch": "npm run lint -- --watch"
   },
   "author": "Obiagba Mary",
   "license": "ISC",
