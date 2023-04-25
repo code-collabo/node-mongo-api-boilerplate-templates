@@ -36,4 +36,4 @@ app.use((error, req, res, next) => {//eslint-disable-line no-unused-vars
   });
 });
 
-module.exports = app;
+module.exports = { app };
