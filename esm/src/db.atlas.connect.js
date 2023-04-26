@@ -6,10 +6,10 @@ import { server, watchEslint } from './lib/script';
 
 dotenv.config();
 
-const mongooseConnect = async (port: number | string) => {
+const mongooseAtlasConnect = async (port) => {
   try {
-    await mongoose.connect(`${process.env.MONGODB_URI}`);
-    console.log('\nConnected to local mongoDB');
+    await mongoose.connect(`${process.env.MONGODB_ATLAS_URI}`);
+    console.log('\nConnected to mongoDB ATLAS');
     server(port);
     watchEslint();
   } catch (err) {
@@ -17,4 +17,4 @@ const mongooseConnect = async (port: number | string) => {
   }
 }
 
-export default mongooseConnect;
+export default mongooseAtlasConnect;
