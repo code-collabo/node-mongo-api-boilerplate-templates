@@ -6,7 +6,7 @@ const { server, watchEslint }  = require('./lib/script');
 
 dotenv.config();
 
-const mongooseLocalConnect = async (port) => {
+const mongooseLocalConnect = async function (port) {
   try {
     await mongoose.connect(`${process.env.MONGODB_LOCAL_URI}`);
     console.log('\nConnected to local mongoDB');

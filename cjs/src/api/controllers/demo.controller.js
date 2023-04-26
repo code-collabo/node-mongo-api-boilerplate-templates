@@ -13,7 +13,7 @@ const item = `${routeName}-item`;
 
 /* eslint-disable no-console */
 
-const getDemoItemsController = (req, res) => {
+const getDemoItemsController = function (req, res) {
   getDemoItemsService()
   .then((docs) => {
     const response = {
@@ -41,7 +41,7 @@ const getDemoItemsController = (req, res) => {
   });
 };
 
-const createDemoItemController = (req, res) => {
+const createDemoItemController = function (req, res) {
   createDemoItemService(req)
   .then((doc) => {
     res.status(201).json({
@@ -66,7 +66,7 @@ const createDemoItemController = (req, res) => {
   });
 };
 
-const getOneDemoItemController = (req, res) => {
+const getOneDemoItemController = function (req, res) {
   const id = req.params.demoId;
   getOneDemoItemService(id)
   .then((doc) => {
@@ -98,7 +98,7 @@ const getOneDemoItemController = (req, res) => {
   });
 };
 
-const deleteDemoItemController = (req, res) => {
+const deleteDemoItemController = function (req, res) {
   const id = req.params.demoId;
   deleteDemoItemService(id)
   .then(() => {
@@ -125,7 +125,7 @@ const deleteDemoItemController = (req, res) => {
   });
 };
 
-const updateOneDemoItemPropertyValueController = (req, res) => {
+const updateOneDemoItemPropertyValueController = function (req, res) {
   const id = req.params.demoId;
   updateOneDemoItemPropertyValueService(id, req.body)
   .then(() => {
@@ -148,7 +148,7 @@ const updateOneDemoItemPropertyValueController = (req, res) => {
   });
 };
 
-const updateDemoItemPropertyValuesController = (req, res) => {
+const updateDemoItemPropertyValuesController = function (req, res) {
   const id = req.params.id;
   updateDemoItemPropertyValuesService(id, req.body)
   .then(() => {

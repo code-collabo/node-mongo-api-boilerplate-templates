@@ -6,7 +6,7 @@ const { server, watchEslint } = require('./lib/script');
 
 dotenv.config();
 
-const mongooseAtlasConnect = async (port) => {
+const mongooseAtlasConnect = async function (port) {
   try {
     await mongoose.connect(`${process.env.MONGODB_ATLAS_URI}`);
     console.log('\nConnected to mongoDB ATLAS');
