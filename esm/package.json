@@ -2,9 +2,9 @@
   "name": "node-mongo-api-boilerplate-template-esm",
   "version": "1.0.0",
   "description": "@code-collabo node-mongo API boilerplate template - es module",
-  "main": "index.js",
+  "main": "src/server.[atlas/local].js",
   "scripts": {
-    "dev": "nodemon --exec babel-node src/server.js",
+    "dev:local": "nodemon --exec babel-node src/server.local.js",
     "dev:atlas": "nodemon --exec babel-node src/server.atlas.js",
     "lint": "esw src --color",
     "lint:watch": "npm run lint -- --watch"
@@ -28,7 +28,6 @@
     "eslint": "^7.20.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-watch": "^7.0.0",
-    "nodemon": "^2.0.7",
-    "open": "^7.4.2"
+    "nodemon": "^2.0.7"
   }
 }
