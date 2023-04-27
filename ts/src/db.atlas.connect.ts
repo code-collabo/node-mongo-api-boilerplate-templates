@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import { server, watchEslint } from './lib/script';
-import chalk from "chalk";
+import chalk from 'chalk';
 /* eslint-disable no-console */
 
 dotenv.config();
