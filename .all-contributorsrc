@@ -1,0 +1,16 @@
+{
+  "projectName": "node-mongo-api-boilerplate-templates",
+  "projectOwner": "code-collabo",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributorsPerLine": 6,
+  "contributorsSortAlphabetically": true,
+  "skipCi": true,
+  "contributors": [],
+  "commitConvention": "angular"
+}
