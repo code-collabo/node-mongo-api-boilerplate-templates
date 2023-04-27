@@ -20,6 +20,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Dkingofcode",
+      "name": "David Oladepo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/91491738?v=4",
+      "profile": "https://github.com/Dkingofcode",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "commitConvention": "angular"
