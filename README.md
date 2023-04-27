@@ -1,7 +1,7 @@
 # @code-collabo/node-mongo-api-boilerplate-templates
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://code-collabo.gitbook.io/node-mongo/contribution-guide/development-mode) [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://github.com/code-collabo/node-mongo-api-boilerplate-templates/blob/develop/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/code-collabo/node-mongo?color=red)](https://github.com/code-collabo/node-mongo/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/code-collabo/node-mongo-api-boilerplate-templates?color=goldenrod)](https://github.com/code-collabo/node-mongo-api-boilerplate-templates/pulls)
@@ -85,6 +85,7 @@ Thanks to these amazing contributors to the node-mongo-api-boilerplate-templates
 <table>
   <tbody>
     <tr>
+      <td align="center" valign="top" width="16.66%"><a href="https://github.com/Ifycode"><img src="https://avatars.githubusercontent.com/u/45185388?v=4?s=100" width="100px;" alt="@Ifycode"/><br /><sub><b>@Ifycode</b></sub></a><br /><a href="https://github.com/code-collabo/node-mongo-api-boilerplate-templates/commits?author=Ifycode" title="Code">💻</a></td>
       <td align="center" valign="top" width="16.66%"><a href="https://github.com/Dkingofcode"><img src="https://avatars.githubusercontent.com/u/91491738?v=4?s=100" width="100px;" alt="David Oladepo"/><br /><sub><b>David Oladepo</b></sub></a><br /><a href="https://github.com/code-collabo/node-mongo-api-boilerplate-templates/commits?author=Dkingofcode" title="Code">💻</a></td>
       <td align="center" valign="top" width="16.66%"><a href="https://github.com/samuko-things"><img src="https://avatars.githubusercontent.com/u/75276934?v=4?s=100" width="100px;" alt="Obiagba Samuel"/><br /><sub><b>Obiagba Samuel</b></sub></a><br /><a href="https://github.com/code-collabo/node-mongo-api-boilerplate-templates/commits?author=samuko-things" title="Code">💻</a></td>
       <td align="center" valign="top" width="16.66%"><a href="https://www.blessingolaleye.xyz/"><img src="https://avatars.githubusercontent.com/u/70102539?v=4?s=100" width="100px;" alt="Olaleye Blessing"/><br /><sub><b>Olaleye Blessing</b></sub></a><br /><a href="https://github.com/code-collabo/node-mongo-api-boilerplate-templates/commits?author=Olaleye-Blessing" title="Documentation">📖</a></td>
