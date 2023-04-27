@@ -31,12 +31,12 @@ const getDemoItemsController = async (req, res) => {
       }),
     };
     res.status(200).json(response);
-    console.log( chalk.greenBright(`\nGET request successful! \n\nRunning at http://localhost:3000/${routeName}/\n`) );
+    console.log( chalk.greenBright(`GET request successful!`) );
   } catch (err) {
     res.status(500).json({
       error: `${err}`,
     });
-    console.log( chalk.redBright(`\nError retriving ${item}s: ${err}\n`) );
+    console.log( chalk.redBright(`Error retriving ${item}s: ${err}`) );
   }
 };
 
@@ -55,12 +55,12 @@ const createDemoItemController = async (req, res) => {
         },
       },
     });
-    console.log( chalk.greenBright(`\n${item} CREATED successfully! \n\nCreated ${item} url: http://localhost:3000/${routeName}/${doc._id}\n`) );
+    console.log( chalk.greenBright(`${item} CREATED successfully!`) );
   } catch (err) {
     res.status(500).json({
       error: `${err}`,
     });
-    console.log( chalk.redBright(`\nError saving ${item}: ${err}\n`) );
+    console.log( chalk.redBright(`Error saving ${item}: ${err}`) );
   }
 };
 
@@ -78,9 +78,9 @@ const getOneDemoItemController = async (req, res) => {
           url: `http://localhost:3000/${routeName}/`,
         },
       });
-      console.log( chalk.greenBright(`\nGET request successful! \n\n${item} url: http://localhost:3000/${routeName}/${doc._id}\n`) );
+      console.log( chalk.greenBright(`GET request successful!`) );
     } else {
-      console.log( chalk.redBright('\nNo record found for provided ID\n') );
+      console.log( chalk.redBright('No record found for provided ID') );
       return res.status(404).json({
         message: 'No record found for provided ID',
       });
@@ -90,14 +90,14 @@ const getOneDemoItemController = async (req, res) => {
       message: 'Invalid ID',
       error: `${err}`,
     });
-    console.log( chalk.redBright(`\nError retriving ${item}: ${err}\n`) );
+    console.log( chalk.redBright(`Error retriving ${item}: ${err}`) );
   }
 };
 
 const deleteDemoItemController = async (req, res) => {
   try {
     await deleteDemoItemService(req.params.demoId);
-    console.log( chalk.greenBright(`\n${item} DELETED successfully!\n`) );
+    console.log( chalk.greenBright(`${item} DELETED successfully!`) );
     res.status(200).json({
       message: `${item} deleted successfully!`,
       request: {
@@ -115,7 +115,7 @@ const deleteDemoItemController = async (req, res) => {
       message: `Error deleting ${item}`,
       error: `${err}`,
     });
-    console.log( chalk.redBright(`\nError deleting ${item}: ${err}\n`) );
+    console.log( chalk.redBright(`Error deleting ${item}: ${err}`) );
   }
 };
 
@@ -123,7 +123,7 @@ const updateOneDemoItemPropertyValueController = async (req, res) => {
   try {
     const id = req.params.demoId;
     await updateOneDemoItemPropertyValueService(id, req.body);
-    console.log( chalk.greenBright(`\nPATCH request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
+    console.log( chalk.greenBright(`PATCH request for ID ${id} successful!`) );
     return res.status(200).json({
       message: 'Patch request successful!',
       request: {
@@ -137,7 +137,7 @@ const updateOneDemoItemPropertyValueController = async (req, res) => {
       message: `Error updating ${item} property & value`,
       error: `${err}`,
     });
-    console.log( chalk.redBright(`\nError updating ${item} property & value: ${err}\n`) );
+    console.log( chalk.redBright(`Error updating ${item} property & value: ${err}`) );
   }
 };
 
@@ -145,7 +145,7 @@ const updateDemoItemPropertyValuesController = async (req, res) => {
   try {
     const id = req.params.id;
     await updateDemoItemPropertyValuesService(id, req.body);
-    console.log( chalk.greenBright(`\nPUT request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
+    console.log( chalk.greenBright(`PUT request for ID ${id} successful!`) );
     return res.status(200).json({
       message: `Put request successful!`,
       request: {
@@ -159,7 +159,7 @@ const updateDemoItemPropertyValuesController = async (req, res) => {
       message: `Error updating ${item}`,
       error: `${err}`,
     });
-    console.log( chalk.redBright(`\nError updating ${item}: ${err}\n`) );
+    console.log( chalk.redBright(`Error updating ${item}: ${err}`) );
   }
 };
 
