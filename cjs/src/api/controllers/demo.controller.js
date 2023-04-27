@@ -31,13 +31,13 @@ const getDemoItemsController = function (req, res) {
       }),
     };
     res.status(200).json(response);
-    console.log( chalk.greenBright(`\nGET request successful! \n\nRunning at http://localhost:3000/${routeName}/\n`) );
+    console.log( chalk.greenBright(`GET request successful!`) );
   })
   .catch((err) => {
     res.status(500).json({
       error: `${err}`,
     });
-    console.log( chalk.redBright(`\nError retriving ${item}s: ${err}\n`) );
+    console.log( chalk.redBright(`Error retriving ${item}s: ${err}`) );
   });
 };
 
@@ -56,13 +56,13 @@ const createDemoItemController = function (req, res) {
         },
       },
     });
-    console.log( chalk.greenBright(`\n${item} CREATED successfully! \n\nCreated ${item} url: http://localhost:3000/${routeName}/${doc._id}\n`) );
+    console.log( chalk.greenBright(`${item} CREATED successfully!`) );
   })
   .catch((err) => {
     res.status(500).json({
       error: `${err}`,
     });
-    console.log( chalk.redBright(`\nError saving ${item}: ${err}\n`) );
+    console.log( chalk.redBright(`Error saving ${item}: ${err}`) );
   });
 };
 
@@ -81,9 +81,9 @@ const getOneDemoItemController = function (req, res) {
           url: `http://localhost:3000/${routeName}/`,
         },
       });
-      console.log( chalk.greenBright(`\nGET request successful! \n\n${item} url: http://localhost:3000/${routeName}/${doc._id}\n`) );
+      console.log( chalk.greenBright(`GET request successful!`) );
     } else {
-      console.log( chalk.redBright('\nNo record found for provided ID\n') );
+      console.log( chalk.redBright('No record found for provided ID') );
       return res.status(404).json({
         message: 'No record found for provided ID',
       });
@@ -102,7 +102,7 @@ const deleteDemoItemController = function (req, res) {
   const id = req.params.demoId;
   deleteDemoItemService(id)
   .then(() => {
-    console.log( chalk.greenBright(`\n${item} DELETED successfully!\n`) );
+    console.log( chalk.greenBright(`${item} DELETED successfully!`) );
     res.status(200).json({
       message: `${item} deleted successfully!`,
       request: {
@@ -121,7 +121,7 @@ const deleteDemoItemController = function (req, res) {
       message: `Error deleting ${item}`,
       error: `${err}`,
     });
-    console.log( chalk.redBright(`\nError deleting ${item}: ${err}\n`) );
+    console.log( chalk.redBright(`Error deleting ${item}: ${err}`) );
   });
 };
 
@@ -129,7 +129,7 @@ const updateOneDemoItemPropertyValueController = function (req, res) {
   const id = req.params.demoId;
   updateOneDemoItemPropertyValueService(id, req.body)
   .then(() => {
-    console.log( chalk.greenBright(`\nPATCH request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
+    console.log( chalk.greenBright(`PATCH request for ID ${id} successful!`) );
     return res.status(200).json({
       message: 'Patch request successful!',
       request: {
@@ -144,7 +144,7 @@ const updateOneDemoItemPropertyValueController = function (req, res) {
       message: `Error updating ${item} property & value`,
       error: `${err}`,
     });
-    console.log( chalk.redBright(`\nError updating ${item} property & value: ${err}\n`) );
+    console.log( chalk.redBright(`Error updating ${item} property & value: ${err}`) );
   });
 };
 
@@ -152,7 +152,7 @@ const updateDemoItemPropertyValuesController = function (req, res) {
   const id = req.params.id;
   updateDemoItemPropertyValuesService(id, req.body)
   .then(() => {
-    console.log( chalk.greenBright(`\nPUT request for ID ${id} successful! \n\nUpdated ${item} url: http://localhost:3000/${routeName}/${id}\n`) );
+    console.log( chalk.greenBright(`PUT request for ID ${id} successful!`) );
     return res.status(200).json({
       message: `Put request successful!`,
       request: {
@@ -167,7 +167,7 @@ const updateDemoItemPropertyValuesController = function (req, res) {
       message: `Error updating ${item}`,
       error: `${err}`,
     });
-    console.log( chalk.redBright(`\nError updating ${item}: ${err}\n`) );
+    console.log( chalk.redBright(`Error updating ${item}: ${err}`) );
   });
 };
 
