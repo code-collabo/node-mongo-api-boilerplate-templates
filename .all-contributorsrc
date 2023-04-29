@@ -1,0 +1,62 @@
+{
+  "projectName": "node-mongo-api-boilerplate-templates",
+  "projectOwner": "code-collabo",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributorsPerLine": 6,
+  "contributorsSortAlphabetically": true,
+  "skipCi": true,
+  "contributors": [
+    {
+      "login": "samuko-things",
+      "name": "Obiagba Samuel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75276934?v=4",
+      "profile": "https://github.com/samuko-things",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Dkingofcode",
+      "name": "David Oladepo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/91491738?v=4",
+      "profile": "https://github.com/Dkingofcode",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Olaleye-Blessing",
+      "name": "Olaleye Blessing",
+      "avatar_url": "https://avatars.githubusercontent.com/u/70102539?v=4",
+      "profile": "https://www.blessingolaleye.xyz/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Ifycode",
+      "name": "@Ifycode",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45185388?v=4",
+      "profile": "https://github.com/Ifycode",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "all-contributors",
+      "name": "All Contributors",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46410174?v=4",
+      "profile": "https://allcontributors.org",
+      "contributions": [
+        "infra"
+      ]
+    }
+  ],
+  "commitConvention": "angular"
+}
