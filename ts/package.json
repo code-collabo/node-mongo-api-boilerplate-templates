@@ -2,7 +2,7 @@
   "name": "node-mongo-api-boilerplate-template-ts",
   "version": "1.0.0",
   "description": "@code-collabo node-mongo API boilerplate template - typescript",
-  "main": "src/server.atlas.ts",
+  "main": "src/server.[atlas/local].ts",
   "scripts": {
     "dev:local": "ts-node-dev --respawn --transpile-only src/server.local.ts",
     "dev:atlas": "ts-node-dev --respawn --transpile-only src/server.atlas.ts",
