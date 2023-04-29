@@ -123,7 +123,7 @@ export const deleteDemoItemController = async (req: Request, res: Response) => {
 
 export const updateOneDemoItemPropertyValueController = async (req: Request, res: Response) => {
   try {
-    const id = req.params.demoId;
+    const id: string = req.params.demoId;
     await updateOneDemoItemPropertyValueService(id, req.body);
     const response = {
       message: 'Patch request successful!',
@@ -146,7 +146,7 @@ export const updateOneDemoItemPropertyValueController = async (req: Request, res
 
 export const updateDemoItemPropertyValuesController = async (req: Request, res: Response) => {
   try {
-    const id = req.params.id;
+    const id: string = req.params.id;
     await updateDemoItemPropertyValuesService(id, req.body);
     const response = {
       message: `Put request successful!`,
