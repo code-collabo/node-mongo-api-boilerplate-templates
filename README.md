@@ -8,7 +8,14 @@
 
 #
 
-**Supported node versions:** node v12.x to v18.x
+> **Note** 
+> 
+> node-mongo projects require you to have Node.js or Node Version Manager (NVM) installed on your computer 
+
+
+#
+
+**Supported Node.js versions:** Node.js v12.x to v18.x
 
 #
 
