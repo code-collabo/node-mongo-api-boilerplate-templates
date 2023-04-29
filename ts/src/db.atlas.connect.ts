@@ -1,19 +1,16 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { server, watchEslint } from './lib/script';
-import chalk from 'chalk';
-/* eslint-disable no-console */
+import { afterDBconnectSuccessful } from './lib/dbconnect';
+import { error } from './lib/consolemsg';
 
 dotenv.config();
 
 const mongooseAtlasConnect = async (port: number | string) => {
   try {
     await mongoose.connect(`${process.env.MONGODB_ATLAS_URI}`);
-    console.log(chalk.green('\nConnected to mongoDB ATLAS'));
-    server(port);
-    watchEslint();
+    afterDBconnectSuccessful(port);
   } catch (err) {
-    console.log(chalk.red(`\nError in DB connection: ${err.message} \n`));
+    error(`\nError in DB connection: ${err.message} \n`);
   }
 }
 
