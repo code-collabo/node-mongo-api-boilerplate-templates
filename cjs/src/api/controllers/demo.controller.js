@@ -1,4 +1,3 @@
-const chalk = require('chalk');
 const {
   getDemoItemsService,
   createDemoItemService,
@@ -7,11 +6,10 @@ const {
   updateOneDemoItemPropertyValueService,
   updateDemoItemPropertyValuesService,
 } = require('../services/demo.service');
+const { success, error } = require('../../lib/consolemsg');
 
 const routeName = 'demo';
 const item = `${routeName}-item`;
-
-/* eslint-disable no-console */
 
 const getDemoItemsController = function (req, res) {
   getDemoItemsService()
@@ -30,21 +28,21 @@ const getDemoItemsController = function (req, res) {
         };
       }),
     };
-    res.status(200).json(response);
-    console.log( chalk.greenBright(`GET request successful!`) );
+    success(`GET request successful!`);
+    return res.status(200).json(response);
   })
   .catch((err) => {
+    error(`Error retriving ${item}s: ${err}`);
     res.status(500).json({
       error: `${err}`,
     });
-    console.log( chalk.redBright(`Error retriving ${item}s: ${err}`) );
   });
 };
 
 const createDemoItemController = function (req, res) {
   createDemoItemService(req)
   .then((doc) => {
-    res.status(201).json({
+    const response = {
       message: `${item} created successfully!`,
       newItem: {
         _id: doc._id,
@@ -55,14 +53,15 @@ const createDemoItemController = function (req, res) {
           url: `http://localhost:3000/${routeName}/${doc._id}`,
         },
       },
-    });
-    console.log( chalk.greenBright(`${item} CREATED successfully!`) );
+    }
+    success(`${item} CREATED successfully!`);
+    return res.status(201).json(response);
   })
   .catch((err) => {
+    error(`Error saving ${item}: ${err}`);
     res.status(500).json({
       error: `${err}`,
     });
-    console.log( chalk.redBright(`Error saving ${item}: ${err}`) );
   });
 };
 
@@ -71,7 +70,7 @@ const getOneDemoItemController = function (req, res) {
   getOneDemoItemService(id)
   .then((doc) => {
     if (doc) {
-      res.status(200).json({
+      const response = {
         _id: doc._id,
         name: doc.name,
         age: doc.age,
@@ -80,21 +79,22 @@ const getOneDemoItemController = function (req, res) {
           description: `Url link to all ${item}s`,
           url: `http://localhost:3000/${routeName}/`,
         },
-      });
-      console.log( chalk.greenBright(`GET request successful!`) );
+      }
+      success(`GET request successful!`);
+      return res.status(200).json(response);
     } else {
-      console.log( chalk.redBright('No record found for provided ID') );
+      error('No record found for provided ID');
       return res.status(404).json({
         message: 'No record found for provided ID',
       });
     }
   })
   .catch((err) => {
+    error(`Error retriving ${item}: ${err}`);
     res.status(500).json({
       message: 'Invalid ID',
       error: `${err}`,
     });
-    console.log( chalk.redBright(`Error retriving ${item}: ${err}`) );
   });
 };
 
@@ -102,8 +102,7 @@ const deleteDemoItemController = function (req, res) {
   const id = req.params.demoId;
   deleteDemoItemService(id)
   .then(() => {
-    console.log( chalk.greenBright(`${item} DELETED successfully!`) );
-    res.status(200).json({
+    const response = {
       message: `${item} deleted successfully!`,
       request: {
         type: 'POST',
@@ -114,14 +113,16 @@ const deleteDemoItemController = function (req, res) {
           age: 'Number',
         },
       },
-    });
+    }
+    success(`${item} DELETED successfully!`);
+    return res.status(200).json(response);
   })
   .catch((err) => {
+    error(`Error deleting ${item}: ${err}`);
     res.status(500).json({
       message: `Error deleting ${item}`,
       error: `${err}`,
     });
-    console.log( chalk.redBright(`Error deleting ${item}: ${err}`) );
   });
 };
 
@@ -129,22 +130,23 @@ const updateOneDemoItemPropertyValueController = function (req, res) {
   const id = req.params.demoId;
   updateOneDemoItemPropertyValueService(id, req.body)
   .then(() => {
-    console.log( chalk.greenBright(`PATCH request for ID ${id} successful!`) );
-    return res.status(200).json({
+    const response = {
       message: 'Patch request successful!',
       request: {
         type: 'GET',
         description: `Url link to updated ${item}`,
         url: `http://localhost:3000/${routeName}/${id}`,
       },
-    });
+    };
+    success(`PATCH request for ID ${id} successful!`);
+    return res.status(200).json(response);
   })
   .catch((err) => {
+    error(`Error updating ${item} property & value: ${err}`);
     res.status(500).json({
       message: `Error updating ${item} property & value`,
       error: `${err}`,
     });
-    console.log( chalk.redBright(`Error updating ${item} property & value: ${err}`) );
   });
 };
 
@@ -152,22 +154,23 @@ const updateDemoItemPropertyValuesController = function (req, res) {
   const id = req.params.id;
   updateDemoItemPropertyValuesService(id, req.body)
   .then(() => {
-    console.log( chalk.greenBright(`PUT request for ID ${id} successful!`) );
-    return res.status(200).json({
+    const response = {
       message: `Put request successful!`,
       request: {
         type: 'GET',
         description: `Url link to updated ${item}`,
         url: `http://localhost:3000/${routeName}/${id}`,
       },
-    });
+    };
+    success(`PUT request for ID ${id} successful!`);
+    return res.status(200).json(response);
   })
   .catch((err) => {
+    error(`Error updating ${item}: ${err}`);
     res.status(500).json({
       message: `Error updating ${item}`,
       error: `${err}`,
     });
-    console.log( chalk.redBright(`Error updating ${item}: ${err}`) );
   });
 };
 
