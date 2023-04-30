@@ -27,7 +27,7 @@ This is the manual download option for the API boilerplate templates generated b
 
 #
 **Features:**
-* Three (3) API boilerplate templates i.e. typescript, es module, or common js (a.k.a. ts, esm, cjs) templates for your nodejs mongoDB development, depending on your preference.
+* Three (3) API boilerplate templates to choose from i.e. typescript, es module, or common js templates (a.k.a. ts, esm, cjs) for your nodejs mongoDB development, depending on your preference.
 * API boilerplate templates now use the MVC architecture pattern i.e. separated route, model, controller, and service files.
 * Development environment already set up with @babel (for esm template only), eslint, and server watch.
 * The default connection setup type is MongoDB Atlas. But you get to choose if you want to use it or switch to the Local mongoDB connection setup type.
