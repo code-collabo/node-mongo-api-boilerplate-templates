@@ -49,6 +49,7 @@ npm install
 ````
 
 #### Step 2
+- Ensure you have internet connection
 - Have a monogDB atlas cluster set up in the cloud
 - Get your atlas mongoDB uri string
 
@@ -85,12 +86,6 @@ Start dev server for connection to local mongoDB:
 ````
 npm run dev:local
 ````
-
-<!--
-#
-> TODO 1: Fix further help and contributors sections
-> TODO 2: Fix Contributors welcome badge link
--->
 
 ## Documentation
 See the links to the official documentation of the node-mongo project and community building it below:
