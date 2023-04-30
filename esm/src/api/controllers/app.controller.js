@@ -1,10 +1,7 @@
-import chalk from 'chalk';
-
-/* eslint-disable no-console */
+import { success } from '../../lib/consolemsg';
 
 export const getAppController = async (req, res) => {
-  res.status(200).json({
-    message: 'App works!'
-  });
-  console.log( chalk.greenBright('\nApp works! \n\nRunning at http://localhost:3000/\n') );
+  const message = 'App works!';
+  success(message);
+  return res.status(200).json({ message });
 }

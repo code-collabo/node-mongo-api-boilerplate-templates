@@ -1,19 +1,15 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const { server, watchEslint } = require('./lib/script');
-
-/* eslint-disable no-console */
+const { afterAtlasDBconnectSuccessful, connectToDBunsuccessful } = require('./lib/dbconnect');
 
 dotenv.config();
 
 const mongooseAtlasConnect = async function (port) {
   try {
     await mongoose.connect(`${process.env.MONGODB_ATLAS_URI}`);
-    console.log('\nConnected to mongoDB ATLAS');
-    server(port);
-    watchEslint();
+    afterAtlasDBconnectSuccessful(port);
   } catch (err) {
-    console.log(`\nError in DB connection: ${err.message} \n`);
+    connectToDBunsuccessful(err);
   }
 }
 

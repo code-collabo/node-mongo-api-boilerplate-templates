@@ -1,4 +1,3 @@
-import { DocumentDefinition } from 'mongoose';
 import { DemoDocument, DemoModel as Demo } from '../models/demo.model';
 
 export const getDemoItemsService = async () => {
@@ -6,7 +5,7 @@ export const getDemoItemsService = async () => {
   return query;
 }
 
-export const createDemoItemService = async (requestBody: DocumentDefinition<DemoDocument>): Promise<DemoDocument> => {
+export const createDemoItemService = async (requestBody: DemoDocument): Promise<DemoDocument> => {
   const demo = new Demo({
     name: requestBody.name,
     age: requestBody.age
@@ -34,7 +33,7 @@ export const updateOneDemoItemPropertyValueService = async (paramsId: string, re
   return query;
 };
 
-export const updateDemoItemPropertyValuesService = async (paramsId: string, requestBody: DocumentDefinition<DemoDocument>) => {
+export const updateDemoItemPropertyValuesService = async (paramsId: string, requestBody: DemoDocument) => {
   const resetItem = {
     name: requestBody.name,
     age: requestBody.age,
