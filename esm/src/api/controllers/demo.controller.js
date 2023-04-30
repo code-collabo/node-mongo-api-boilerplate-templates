@@ -11,10 +11,12 @@ import { success, error } from '../../lib/consolemsg';
 const routeName = 'demo';
 const item = `${routeName}-item`;
 
+let response = {};
+
 const getDemoItemsController = async (req, res) => {
   try {
     const docs = await getDemoItemsService();
-    const response = {
+    response = {
       count: docs.length,
       items: docs.map((doc) => {
         return {
@@ -41,7 +43,7 @@ const getDemoItemsController = async (req, res) => {
 const createDemoItemController = async (req, res) => {
   try {
     const doc = await createDemoItemService(req.body);
-    const response = {
+    response = {
       message: `${item} created successfully!`,
       newItem: {
         _id: doc._id,
@@ -67,7 +69,7 @@ const getOneDemoItemController = async (req, res) => {
   try {
     const doc = await getOneDemoItemService(req.params.demoId);
     if (doc) {
-      const response = {
+      response = {
         _id: doc._id,
         name: doc.name,
         age: doc.age,
@@ -97,7 +99,7 @@ const getOneDemoItemController = async (req, res) => {
 const deleteDemoItemController = async (req, res) => {
   try {
     await deleteDemoItemService(req.params.demoId);
-    const response = {
+    response = {
       message: `${item} deleted successfully!`,
       request: {
         type: 'POST',
@@ -124,7 +126,7 @@ const updateOneDemoItemPropertyValueController = async (req, res) => {
   try {
     const id = req.params.demoId;
     await updateOneDemoItemPropertyValueService(id, req.body);
-    const response = {
+    response = {
       message: 'Patch request successful!',
       request: {
         type: 'GET',
@@ -147,7 +149,7 @@ const updateDemoItemPropertyValuesController = async (req, res) => {
   try {
     const id = req.params.id;
     await updateDemoItemPropertyValuesService(id, req.body);
-    const response = {
+    response = {
       message: `Put request successful!`,
       request: {
         type: 'GET',

@@ -12,10 +12,12 @@ import { success, error } from '../../lib/consolemsg';
 const routeName = 'demo';
 const item = `${routeName}-item`;
 
+let response: { [key: string]: unknown } = {};
+
 export const getDemoItemsController = async (req: Request, res: Response) => {
   try {
     const docs = await getDemoItemsService();
-    const response = {
+    response = {
       count: docs.length,
       items: docs.map(doc => {
         return {
@@ -42,7 +44,7 @@ export const getDemoItemsController = async (req: Request, res: Response) => {
 export const createDemoItemController = async (req: Request, res: Response) => {
   try {
     const doc = await createDemoItemService(req.body);
-    const response = {
+    response = {
       message: `${item} created successfully!`,
       newItem: {
         _id: doc._id,
@@ -68,7 +70,7 @@ export const getOneDemoItemController = async (req: Request, res: Response) => {
   try {
     const doc = await getOneDemoItemService(req.params.demoId);
     if (doc) {
-      const response = {
+      response = {
         _id: doc._id,
         name: doc.name,
         age: doc.age,
@@ -98,7 +100,7 @@ export const getOneDemoItemController = async (req: Request, res: Response) => {
 export const deleteDemoItemController = async (req: Request, res: Response) => {
   try {
     await deleteDemoItemService(req.params.demoId);
-    const response = {
+    response = {
       message: `${item} deleted successfully!`,
       request: {
         type: 'POST',
@@ -125,7 +127,7 @@ export const updateOneDemoItemPropertyValueController = async (req: Request, res
   try {
     const id: string = req.params.demoId;
     await updateOneDemoItemPropertyValueService(id, req.body);
-    const response = {
+    response = {
       message: 'Patch request successful!',
       request: {
         type: 'GET',
@@ -148,7 +150,7 @@ export const updateDemoItemPropertyValuesController = async (req: Request, res: 
   try {
     const id: string = req.params.id;
     await updateDemoItemPropertyValuesService(id, req.body);
-    const response = {
+    response = {
       message: `Put request successful!`,
       request: {
         type: 'GET',

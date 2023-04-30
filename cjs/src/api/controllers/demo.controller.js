@@ -11,10 +11,12 @@ const { success, error } = require('../../lib/consolemsg');
 const routeName = 'demo';
 const item = `${routeName}-item`;
 
+let response = {};
+
 const getDemoItemsController = function (req, res) {
   getDemoItemsService()
   .then((docs) => {
-    const response = {
+    response = {
       count: docs.length,
       items: docs.map((doc) => {
         return {
@@ -42,7 +44,7 @@ const getDemoItemsController = function (req, res) {
 const createDemoItemController = function (req, res) {
   createDemoItemService(req)
   .then((doc) => {
-    const response = {
+    response = {
       message: `${item} created successfully!`,
       newItem: {
         _id: doc._id,
@@ -70,7 +72,7 @@ const getOneDemoItemController = function (req, res) {
   getOneDemoItemService(id)
   .then((doc) => {
     if (doc) {
-      const response = {
+      response = {
         _id: doc._id,
         name: doc.name,
         age: doc.age,
@@ -102,7 +104,7 @@ const deleteDemoItemController = function (req, res) {
   const id = req.params.demoId;
   deleteDemoItemService(id)
   .then(() => {
-    const response = {
+    response = {
       message: `${item} deleted successfully!`,
       request: {
         type: 'POST',
@@ -130,7 +132,7 @@ const updateOneDemoItemPropertyValueController = function (req, res) {
   const id = req.params.demoId;
   updateOneDemoItemPropertyValueService(id, req.body)
   .then(() => {
-    const response = {
+    response = {
       message: 'Patch request successful!',
       request: {
         type: 'GET',
@@ -154,7 +156,7 @@ const updateDemoItemPropertyValuesController = function (req, res) {
   const id = req.params.id;
   updateDemoItemPropertyValuesService(id, req.body)
   .then(() => {
-    const response = {
+    response = {
       message: `Put request successful!`,
       request: {
         type: 'GET',
