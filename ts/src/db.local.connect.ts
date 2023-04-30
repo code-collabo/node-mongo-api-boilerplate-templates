@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { afterLocalDBconnectSuccessful } from './lib/dbconnect';
-import { error } from './lib/consolemsg';
+import { afterLocalDBconnectSuccessful, connectToDBunsuccessful } from './lib/dbconnect';
 
 dotenv.config();
 
@@ -10,7 +9,7 @@ const mongooseLocalConnect = async (port: number | string) => {
     await mongoose.connect(`${process.env.MONGODB_LOCAL_URI}`);
     afterLocalDBconnectSuccessful(port);
   } catch (err) {
-    error(`\nError in DB connection: ${err.message} \n`);
+    connectToDBunsuccessful(err);
   }
 }
 

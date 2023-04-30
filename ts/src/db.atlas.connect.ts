@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { afterAtlasDBconnectSuccessful } from './lib/dbconnect';
-import { error } from './lib/consolemsg';
+import { afterAtlasDBconnectSuccessful, connectToDBunsuccessful } from './lib/dbconnect';
 
 dotenv.config();
 
@@ -10,7 +9,7 @@ const mongooseAtlasConnect = async (port: number | string) => {
     await mongoose.connect(`${process.env.MONGODB_ATLAS_URI}`);
     afterAtlasDBconnectSuccessful(port);
   } catch (err) {
-    error(`\nError in DB connection: ${err.message} \n`);
+    connectToDBunsuccessful(err);
   }
 }
 

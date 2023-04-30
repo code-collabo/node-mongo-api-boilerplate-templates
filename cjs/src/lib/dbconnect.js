@@ -1,5 +1,5 @@
 const { spawn } = require('child_process');
-const { success, error } = require('./consolemsg');
+const { success, error, warning } = require('./consolemsg');
 const package_json = require('../../package.json');
 
 /* eslint-disable no-console */
@@ -33,9 +33,15 @@ const afterLocalDBconnectSuccessful = (serverPort) => {
   eslintAndServer(serverPort);
 }
 
+const connectToDBunsuccessful = (err) => {
+  error(`\nError in DB connection: ${err.message}\n`);
+  warning('Refer to the node-mongo documentation: https://code-collabo.gitbook.io/node-mongo-v2.0.0\n\nGet further help from Code Collabo Community\'s Node mongo channel: https://matrix.to/#/#collabo-node-mongo:gitter.im');
+}
+
 module.exports = {
   watchEslint,
   server,
   afterAtlasDBconnectSuccessful,
-  afterLocalDBconnectSuccessful
+  afterLocalDBconnectSuccessful,
+  connectToDBunsuccessful,
 };
