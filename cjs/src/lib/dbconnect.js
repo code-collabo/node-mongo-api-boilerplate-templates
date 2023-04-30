@@ -35,7 +35,7 @@ const afterLocalDBconnectSuccessful = (serverPort) => {
 
 const connectToDBunsuccessful = (err) => {
   error(`\nError in DB connection: ${err.message}\n`);
-  warning('Refer to the node-mongo documentation: https://code-collabo.gitbook.io/node-mongo-v2.0.0\n\nGet further help from Code Collabo Community\'s Node mongo channel: https://matrix.to/#/#collabo-node-mongo:gitter.im');
+  warning('Refer to the node-mongo documentation: https://code-collabo.gitbook.io/node-mongo-v2.0.0\n\nGet further help from Code Collabo Community\'s Node mongo channel: https://matrix.to/#/#collabo-node-mongo:gitter.im\n');
 }
 
 module.exports = {
