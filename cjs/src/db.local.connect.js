@@ -1,19 +1,15 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const { server, watchEslint }  = require('./lib/script');
-
-/* eslint-disable no-console */
+const { afterLocalDBconnectSuccessful, connectToDBunsuccessful }  = require('./lib/dbconnect');
 
 dotenv.config();
 
 const mongooseLocalConnect = async function (port) {
   try {
     await mongoose.connect(`${process.env.MONGODB_LOCAL_URI}`);
-    console.log('\nConnected to local mongoDB');
-    server(port);
-    watchEslint();
+    afterLocalDBconnectSuccessful(port);
   } catch (err) {
-    console.log(`\nError in DB connection: ${err.message} \n`);
+    connectToDBunsuccessful(err);
   }
 }
 

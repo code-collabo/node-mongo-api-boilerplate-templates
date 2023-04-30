@@ -1,12 +1,9 @@
-const chalk = require('chalk');
-
-/* eslint-disable no-console */
+const { success } = require('../../lib/consolemsg');
 
 async function getAppController (req, res) {
-  res.status(200).json({
-    message: 'App works!'
-  });
-  console.log( chalk.greenBright('App works!') );
+  const message = 'App works!';
+  success(message);
+  return res.status(200).json({ message });
 }
 
 module.exports = { getAppController };
