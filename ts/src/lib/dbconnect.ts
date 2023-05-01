@@ -4,9 +4,9 @@ import package_json from '../../package.json';
 
 /* eslint-disable no-console */
 
-export const watchEslint = (): void => {
+export const npmRunPackageJsonScript = ({ script, currentWorkingDir } : { script: string, currentWorkingDir: string }): void => {
   const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-  spawn(npm, ['run', 'lint:watch'], { cwd: './', stdio: 'inherit' });
+  spawn(npm, ['run', script], { cwd: currentWorkingDir, stdio: 'inherit' });
 }
 
 export const server = (serverPort: number | string): void => {
@@ -19,7 +19,7 @@ export const server = (serverPort: number | string): void => {
 }
 
 const eslintAndServer = (serverPort: number | string) => {
-  watchEslint();
+  npmRunPackageJsonScript({ script: 'lint:watch', currentWorkingDir: './' });
   server(serverPort);
 }
 
