@@ -87,6 +87,237 @@ Start dev server for connection to local mongoDB:
 npm run dev:local
 ````
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## API design
+
+|Methods & endpoints|Description|Request body|Auth (access token)|
+|--|--|:--:|:--:|
+|POST /users/signup|Create new user| email, password, passwordConfirmation, name|Not required|
+|POST /users/login|Sign in as existing user, create access token and refresh token for use in all endpoints that require access token|email, password|Access token is generated at this endpoint|
+|GET /users/sessions|Gets all users sessions made through the POST /users/login endpoint. Also reissues an access token (if access token is expired and there's refresh token) |No request body|Use access token from the POST /users/login response|
+|DELETE /users/sessions|Deletes the last recorded session created through the POST /users/login endpoint (Note: this endpoint may need fixing)|No request body|Use access token from the POST /users/login response|
+|POST /books|Create a new book (authenticated user)|title, description, pdf (file upload)|Use access token from the POST /users/login response|
+|GET /books/user/:userId|Get/view only books created by a particular user, using the user ID|No request body|Use access token from the POST /users/login response|
+|GET /books/:bookId|Get/view a book stored in the database, using the book ID|No request body|Not required (for now)|
+|PUT /books/:bookId|Update already existing book in the database, using the book ID|title, description, pdf (file upload)|Use access token from the POST /users/login response|
+|DELETE /books/:bookId|Delete a book from the database, using the book ID|No request body|Use access token from the POST /users/login response|
+<br/>
+
+## API call requests and responses
+
+<details>
+<summary>GET /demo</summary>
+<br/>
+    <b>Request body (sample format)</b>
+    <br/><br/>
+<pre>
+No request body
+</pre>
+<br/>
+     <b>Successful response (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "count": number,
+    "items": [
+        {
+            "_id": "string",
+            "name": "string",
+            "age": number,
+            "request": {
+                "type": "string",
+                "url": "string"
+            }
+        },
+        // etc.
+    ]
+}
+</pre>
+</details>
+
+
+<details>
+<summary>POST /demo</summary>
+<br/>
+    <b>Request body (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "name": "string",
+    "age": number
+}
+</pre>
+<br/>
+     <b>Successful response (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "message": "string",
+    "newItem": {
+        "_id": "string",
+        "name": "string",
+        "age": number,
+        "request": {
+            "type": "string",
+            "url": "string"
+        }
+    }
+}
+</pre>
+</details>
+
+
+
+<details>
+<summary>GET /demo/:demoId</summary>
+<br/>
+    <b>Request body (sample format)</b>
+    <br/><br/>
+<pre>
+No request body
+</pre>
+<br/>
+     <b>Successful response (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "_id": "string",
+    "name": "string",
+    "age": number,
+    "request": {
+        "type": "string",
+        "description": "string",
+        "url": "string"
+    }
+}
+</pre>
+</details>
+
+
+
+<details>
+<summary>PATCH /demo/:demoId</summary>
+<br/>
+    <b>Request body (sample format)</b>
+    <br/><br/>
+<pre>
+[
+    {"string (PROPERTY-NAME)": "string (VALUE)"},
+    // etc.
+]
+e.g:
+[
+    {"name": "string"},
+    {"age": "number"}
+]
+</pre>
+<br/>
+     <b>Successful response (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "message": "string",
+    "request": {
+        "type": "string",
+        "description": "string",
+        "url": "string"
+    }
+}
+</pre>
+</details>
+
+
+
+
+<details>
+<summary>PUT /demo/:id</summary>
+<br/>
+    <b>Request body (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "name": "string",
+    "age": number
+}
+</pre>
+<br/>
+     <b>Successful response (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "message": "string",
+    "request": {
+        "type": "string",
+        "description": "string",
+        "url": "string"
+    }
+}
+</pre>
+</details>
+
+
+
+
+
+
+
+<details>
+<summary>DELETE /demo/:demoId</summary>
+<br/>
+    <b>Request body (sample format)</b>
+    <br/><br/>
+<pre>
+No request body
+</pre>
+<br/>
+     <b>Successful response (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "message": "string",
+    "request": {
+        "type": "string",
+        "description": "string",
+        "url": "string",
+        "body": {
+            "name": "string",
+            "age": "string"
+        }
+    }
+}
+</pre>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Documentation
 See the links to the official documentation of the node-mongo project and community building it below:
 - [Node Mongo documentation](https://code-collabo.gitbook.io/node-mongo-v2.0.0)
