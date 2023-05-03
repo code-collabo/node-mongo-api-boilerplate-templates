@@ -89,36 +89,16 @@ npm run dev:local
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## API design
 
-|Methods & endpoints|Description|Request body|Auth (access token)|
+|Methods & endpoints|Description|Request body||
 |--|--|:--:|:--:|
-|POST /users/signup|Create new user| email, password, passwordConfirmation, name|Not required|
-|POST /users/login|Sign in as existing user, create access token and refresh token for use in all endpoints that require access token|email, password|Access token is generated at this endpoint|
-|GET /users/sessions|Gets all users sessions made through the POST /users/login endpoint. Also reissues an access token (if access token is expired and there's refresh token) |No request body|Use access token from the POST /users/login response|
-|DELETE /users/sessions|Deletes the last recorded session created through the POST /users/login endpoint (Note: this endpoint may need fixing)|No request body|Use access token from the POST /users/login response|
-|POST /books|Create a new book (authenticated user)|title, description, pdf (file upload)|Use access token from the POST /users/login response|
-|GET /books/user/:userId|Get/view only books created by a particular user, using the user ID|No request body|Use access token from the POST /users/login response|
-|GET /books/:bookId|Get/view a book stored in the database, using the book ID|No request body|Not required (for now)|
-|PUT /books/:bookId|Update already existing book in the database, using the book ID|title, description, pdf (file upload)|Use access token from the POST /users/login response|
-|DELETE /books/:bookId|Delete a book from the database, using the book ID|No request body|Use access token from the POST /users/login response|
+|GET /demo|Gets/view all demo data| No Request Body |
+|POST /demo|Create new demo data|name, age|
+|GET /demo/:demoId|Get/view a demo data stored in the database, using the demoId|No Request Body|
+|PATCH /demo/:demoId|Update any of the properties of an already existing demo data in the database, using the demoId|propName, value|
+|PUT /demo/:id|Update all properties (at a time) of an existing demo data in the database, using the id|name, age|
+|DELETE /demo/:demoId|Deletes a demo data stored in the database, using the demoId|No request body|
 <br/>
 
 ## API call requests and responses
@@ -152,6 +132,7 @@ No request body
 }
 </pre>
 </details>
+
 
 
 <details>
@@ -246,7 +227,6 @@ e.g:
 
 
 
-
 <details>
 <summary>PUT /demo/:id</summary>
 <br/>
@@ -272,10 +252,6 @@ e.g:
 }
 </pre>
 </details>
-
-
-
-
 
 
 
@@ -307,15 +283,9 @@ No request body
 </details>
 
 
+##
 
-
-
-
-
-
-
-
-
+##
 
 
 ## Documentation
