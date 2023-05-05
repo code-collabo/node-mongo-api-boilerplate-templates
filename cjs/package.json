@@ -5,6 +5,7 @@
   "main": "src/server.[atlas/local].js",
   "scripts": {
     "dev:auto": "node node-mongo.mjs",
+    "change:connection": "node node-mongo.mjs",
     "dev:local": "nodemon --exec node src/server.local.js",
     "dev:atlas": "nodemon --exec node src/server.atlas.js",
     "lint": "esw src --color",

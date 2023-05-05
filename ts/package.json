@@ -5,6 +5,7 @@
   "main": "src/server.[atlas/local].ts",
   "scripts": {
     "dev:auto": "node node-mongo.mjs",
+    "change:connection": "node node-mongo.mjs",
     "dev:local": "ts-node-dev --respawn --transpile-only src/server.local.ts",
     "dev:atlas": "ts-node-dev --respawn --transpile-only src/server.atlas.ts",
     "lint": "esw src --ext .ts --color",
