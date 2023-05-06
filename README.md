@@ -201,15 +201,11 @@ No request body
     <br/><br/>
 <pre>
 [
-    {"string (PROPERTY-NAME)": "string (VALUE)"},
-    // etc.
-]
-e.g:
-[
-    {"name": "string"},
-    {"age": "number"}
+    { "propName": "string", "value": "string" or number }
 ]
 </pre>
+i.e. propName can be string "name" or "age". Value is a string when name is the propName, while value is a number when age is the propName.
+<br/>
 <br/>
      <b>Successful response (sample format)</b>
     <br/><br/>
