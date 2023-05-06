@@ -1,4 +1,4 @@
-import { chooseNodeMongoApiDBServer } from '../../node-mongo-scripts/scripts/api/connection-type-prompt.js';
+import { chooseNodeMongoApiDBServer } from '../../node-mongo-scripts/index.js';
 
 chooseNodeMongoApiDBServer('./src', 'esm');
 
