@@ -87,6 +87,207 @@ Start dev server for connection to local mongoDB:
 npm run dev:local
 ````
 
+
+
+## API design
+
+|Methods & endpoints|Description|Request body||
+|--|--|:--:|:--:|
+|GET /demo|Gets/view all demo data| No Request Body |
+|POST /demo|Create new demo data|name, age|
+|GET /demo/:demoId|Get/view a demo data stored in the database, using the demoId|No Request Body|
+|PATCH /demo/:demoId|Update any of the properties of an already existing demo data in the database, using the demoId|propName, value|
+|PUT /demo/:id|Update all properties (at a time) of an existing demo data in the database, using the id|name, age|
+|DELETE /demo/:demoId|Deletes a demo data stored in the database, using the demoId|No request body|
+<br/>
+
+## API call requests and responses
+
+<details>
+<summary>GET /demo</summary>
+<br/>
+    <b>Request body (sample format)</b>
+    <br/><br/>
+<pre>
+No request body
+</pre>
+<br/>
+     <b>Successful response (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "count": number,
+    "items": [
+        {
+            "_id": "string",
+            "name": "string",
+            "age": number,
+            "request": {
+                "type": "string",
+                "url": "string"
+            }
+        },
+        // etc.
+    ]
+}
+</pre>
+</details>
+
+
+
+<details>
+<summary>POST /demo</summary>
+<br/>
+    <b>Request body (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "name": "string",
+    "age": number
+}
+</pre>
+<br/>
+     <b>Successful response (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "message": "string",
+    "newItem": {
+        "_id": "string",
+        "name": "string",
+        "age": number,
+        "request": {
+            "type": "string",
+            "url": "string"
+        }
+    }
+}
+</pre>
+</details>
+
+
+
+<details>
+<summary>GET /demo/:demoId</summary>
+<br/>
+    <b>Request body (sample format)</b>
+    <br/><br/>
+<pre>
+No request body
+</pre>
+<br/>
+     <b>Successful response (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "_id": "string",
+    "name": "string",
+    "age": number,
+    "request": {
+        "type": "string",
+        "description": "string",
+        "url": "string"
+    }
+}
+</pre>
+</details>
+
+
+
+<details>
+<summary>PATCH /demo/:demoId</summary>
+<br/>
+    <b>Request body (sample format)</b>
+    <br/><br/>
+<pre>
+[
+    {"string (PROPERTY-NAME)": "string (VALUE)"},
+    // etc.
+]
+e.g:
+[
+    {"name": "string"},
+    {"age": "number"}
+]
+</pre>
+<br/>
+     <b>Successful response (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "message": "string",
+    "request": {
+        "type": "string",
+        "description": "string",
+        "url": "string"
+    }
+}
+</pre>
+</details>
+
+
+
+<details>
+<summary>PUT /demo/:id</summary>
+<br/>
+    <b>Request body (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "name": "string",
+    "age": number
+}
+</pre>
+<br/>
+     <b>Successful response (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "message": "string",
+    "request": {
+        "type": "string",
+        "description": "string",
+        "url": "string"
+    }
+}
+</pre>
+</details>
+
+
+
+<details>
+<summary>DELETE /demo/:demoId</summary>
+<br/>
+    <b>Request body (sample format)</b>
+    <br/><br/>
+<pre>
+No request body
+</pre>
+<br/>
+     <b>Successful response (sample format)</b>
+    <br/><br/>
+<pre>
+{
+    "message": "string",
+    "request": {
+        "type": "string",
+        "description": "string",
+        "url": "string",
+        "body": {
+            "name": "string",
+            "age": "string"
+        }
+    }
+}
+</pre>
+</details>
+
+
+##
+
+##
+
+
 ## Documentation
 See the links to the official documentation of the node-mongo project and community building it below:
 - [Node Mongo documentation](https://code-collabo.gitbook.io/node-mongo-v2.0.0)
