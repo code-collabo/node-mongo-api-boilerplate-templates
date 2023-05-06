@@ -87,7 +87,8 @@ Start dev server for connection to local mongoDB:
 npm run dev:local
 ````
 
-
+## Testing with the demo setup
+A demo setup (i.e. collection, endpoints etc) already exists to help you get started with using the node-mongo API boilerplate templates. Running the demo setup will help you understand how to create your own collection endpoints etc. The API design and API call requests and responses sections below will help you understand how the demo setup works.
 
 ## API design
 
