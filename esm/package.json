@@ -5,11 +5,12 @@
   "main": "src/server.[atlas/local].js",
   "scripts": {
     "dev:auto": "node node-mongo.mjs",
-    "change:connection": "node node-mongo.mjs",
     "dev:local": "nodemon --exec babel-node src/server.local.js",
     "dev:atlas": "nodemon --exec babel-node src/server.atlas.js",
     "lint": "esw src --color",
-    "lint:watch": "npm run lint -- --watch"
+    "lint:watch": "npm run lint -- --watch",
+    "dev:restore": "node node-mongo-restore.mjs",
+    "change:connection": "node node-mongo.mjs"
   },
   "author": "Obiagba Mary",
   "license": "ISC",
