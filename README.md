@@ -91,14 +91,14 @@ npm run dev:local
 
 ## API design
 
-|Methods & endpoints|Description|Request body||
-|--|--|:--:|:--:|
-|GET /demo|Gets/view all demo data| No Request Body |
-|POST /demo|Create new demo data|name, age|
-|GET /demo/:demoId|Get/view a demo data stored in the database, using the demoId|No Request Body|
-|PATCH /demo/:demoId|Update any of the properties of an already existing demo data in the database, using the demoId|propName, value|
-|PUT /demo/:id|Update all properties (at a time) of an existing demo data in the database, using the id|name, age|
-|DELETE /demo/:demoId|Deletes a demo data stored in the database, using the demoId|No request body|
+|METHOD /endpoint|Description|Request body|
+|--|--|:--:|
+|GET /demo|Get all demo items in the database| No Request Body |
+|POST /demo|Create/add new demo item to the database|name, age|
+|GET /demo/:demoId|Get a demo item stored in the database by its ID|No Request Body|
+|PATCH /demo/:demoId|Update the value of one property of an already existing demo item in the database, using the demo item's ID|propName, value|
+|PUT /demo/:id|Update all properties of an existing demo item in the database, using the demo item's ID|name, age|
+|DELETE /demo/:demoId|Delete a demo item from the database, using the demo item's ID|No request body|
 <br/>
 
 ## API call requests and responses
