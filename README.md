@@ -100,7 +100,6 @@ A demo setup (i.e. collection, endpoints etc) already exists to help you get sta
 |PATCH /demo/:demoId|Update the value of one property of an already existing demo item in the database, using the demo item's ID|propName, value|
 |PUT /demo/:id|Update all properties of an existing demo item in the database, using the demo item's ID|name, age|
 |DELETE /demo/:demoId|Delete a demo item from the database, using the demo item's ID|No request body|
-<br/>
 
 ## API call requests and responses
 
