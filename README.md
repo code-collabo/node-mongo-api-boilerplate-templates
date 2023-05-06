@@ -279,16 +279,10 @@ No request body
 </pre>
 </details>
 
-
-##
-
-##
-
-
 ## Documentation
 See the links to the official documentation of the node-mongo project and community building it below:
 - [Node Mongo documentation](https://code-collabo.gitbook.io/node-mongo-v2.0.0)
-- [Code Collabo documentation](https://code-collabo.gitbook.io/doc/)
+- [Code Collabo documentation](https://code-collabo.gitbook.io/community-doc-v1.0.0)
 
 ## Contributors ✨
 
