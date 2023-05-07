@@ -1,3 +1,3 @@
-import { restoreToFirstTimer } from '../../node-mongo-scripts/index';
+import { restoreToFirstTimer } from '@code-collabo/node-mongo-scripts';
 
 restoreToFirstTimer('./src', 'ts');

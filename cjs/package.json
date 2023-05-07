@@ -15,6 +15,7 @@
   "author": "Obiagba Mary",
   "license": "ISC",
   "dependencies": {
+    "@code-collabo/node-mongo-scripts": "^1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "esm": "^3.2.25",
