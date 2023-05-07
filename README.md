@@ -118,13 +118,13 @@ A demo setup (i.e. collection, endpoints etc) already exists to help you get sta
 <details>
 <summary>GET /demo</summary>
 <br/>
-    <b>Request body (sample format)</b>
+    <b>Request body shape</b>
     <br/><br/>
 <pre>
 No request body
 </pre>
 <br/>
-     <b>Successful response (sample format)</b>
+     <b>Successful response shape</b>
     <br/><br/>
 <pre>
 {
@@ -150,7 +150,7 @@ No request body
 <details>
 <summary>POST /demo</summary>
 <br/>
-    <b>Request body (sample format)</b>
+    <b>Request body shape</b>
     <br/><br/>
 <pre>
 {
@@ -159,7 +159,7 @@ No request body
 }
 </pre>
 <br/>
-     <b>Successful response (sample format)</b>
+     <b>Successful response shape</b>
     <br/><br/>
 <pre>
 {
@@ -182,13 +182,13 @@ No request body
 <details>
 <summary>GET /demo/:demoId</summary>
 <br/>
-    <b>Request body (sample format)</b>
+    <b>Request body shape</b>
     <br/><br/>
 <pre>
 No request body
 </pre>
 <br/>
-     <b>Successful response (sample format)</b>
+     <b>Successful response shape</b>
     <br/><br/>
 <pre>
 {
@@ -209,17 +209,25 @@ No request body
 <details>
 <summary>PATCH /demo/:demoId</summary>
 <br/>
-    <b>Request body (sample format)</b>
+    <b>Request body shape</b>
     <br/><br/>
 <pre>
 [
-    { "propName": "string", "value": "string" or number }
+    { "propName": "string", "value": "string" }
+]
+</pre>
+
+OR
+
+<pre>
+[
+    { "propName": "string", "value": number }
 ]
 </pre>
 i.e. propName can be string "name" or "age". Value is a string when name is the propName, while value is a number when age is the propName.
 <br/>
 <br/>
-     <b>Successful response (sample format)</b>
+     <b>Successful response shape</b>
     <br/><br/>
 <pre>
 {
@@ -238,7 +246,7 @@ i.e. propName can be string "name" or "age". Value is a string when name is the 
 <details>
 <summary>PUT /demo/:id</summary>
 <br/>
-    <b>Request body (sample format)</b>
+    <b>Request body shape</b>
     <br/><br/>
 <pre>
 {
@@ -247,7 +255,7 @@ i.e. propName can be string "name" or "age". Value is a string when name is the 
 }
 </pre>
 <br/>
-     <b>Successful response (sample format)</b>
+     <b>Successful response shape</b>
     <br/><br/>
 <pre>
 {
@@ -266,13 +274,13 @@ i.e. propName can be string "name" or "age". Value is a string when name is the 
 <details>
 <summary>DELETE /demo/:demoId</summary>
 <br/>
-    <b>Request body (sample format)</b>
+    <b>Request body shape</b>
     <br/><br/>
 <pre>
 No request body
 </pre>
 <br/>
-     <b>Successful response (sample format)</b>
+     <b>Successful response shape</b>
     <br/><br/>
 <pre>
 {
