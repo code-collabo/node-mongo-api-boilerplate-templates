@@ -12,11 +12,6 @@
 > 
 > node-mongo projects require you to have Node.js or Node Version Manager (NVM) installed on your computer 
 
-
-#
-
-**Supported Node.js versions:** Node.js v12.x to v18.x
-
 #
 
 Parent repo: [code-collabo/node-mongo](https://github.com/code-collabo/node-mongo)
@@ -30,7 +25,7 @@ This is the manual download option for the API boilerplate templates generated b
 * Three (3) API boilerplate templates to choose from i.e. typescript, es module, or common js templates (a.k.a. ts, esm, cjs) for your nodejs mongoDB development, depending on your preference.
 * API boilerplate templates now use the MVC architecture pattern i.e. separated route, model, controller, and service files.
 * Development environment already set up with @babel (for esm template only), eslint, and server watch.
-* The default connection setup type is MongoDB Atlas. But you get to choose if you want to use it or switch to the Local mongoDB connection setup type.
+* The default connection setup type is MongoDB Atlas. You get to choose if you want to use Atlas or switch to the Local mongoDB connection setup type, and you also get to save your preferred connection type for when next you run the automated dev server.
 * Improved user experience with the newly added walk-through prompts in the terminal: quick to setup, easy to use, with automated and improved user support.
 
 #
@@ -55,11 +50,17 @@ npm install
 
 #### Step 3
 - Rename the `.env.example` file to `.env`
-- Change `PORT` environment variable from `8080` to preferred port number in the .env file
+- Change `PORT_ATLAS` environment variable to your preferred port number in the .env file
 - Add your atlas mongoDB uri string to the `MONGODB_ATLAS_URI` environment variable in the .env file
 
 #### Step 4
-Start dev server for connection to mongoDB atlas:
+Start the automated dev server and choose ATLAS connection:
+````
+npm run dev
+````
+
+#### Step 4 (alternative)
+You can also use the (manual) dev server alternative for connection to mongoDB atlas:
 ````
 npm run dev:atlas
 ````
@@ -78,11 +79,17 @@ npm install
 
 #### Step 3
 - Rename the `.env.example` file to `.env`
-- Change `PORT` environment variable from `8080` to preferred port number in the .env file
+- Change `PORT_LOCAL` environment variable to your preferred port number in the .env file
 - Add your local mongoDB uri string to the `MONGODB_LOCAL_URI` environment variable in the .env file
 
 #### Step 4
-Start dev server for connection to local mongoDB:
+Start the automated dev server and choose LOCAL connection:
+````
+npm run dev
+````
+
+#### Step 4 (alternative)
+You can also use the (manual) dev server alternative for connection to local mongoDB:
 ````
 npm run dev:local
 ````
