@@ -1,4 +1,4 @@
-const { success } = require('../../lib/consolemsg');
+const { success } = require('../../../node-mongo-helpers');
 
 async function getAppController (req, res) {
   const message = 'App works!';

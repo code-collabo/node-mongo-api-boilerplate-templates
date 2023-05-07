@@ -1,4 +1,4 @@
-import { success } from '../../lib/consolemsg';
+import { success } from '../../../node-mongo-helpers';
 
 export const getAppController = async (req, res) => {
   const message = 'App works!';

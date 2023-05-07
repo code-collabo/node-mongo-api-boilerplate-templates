@@ -1,9 +1,23 @@
 import { spawn } from 'child_process';
-import { success, error, warning } from './consolemsg';
-import package_json from '../../package.json';
+import package_json from './package.json';
+import chalk from 'chalk';
 
 /* eslint-disable no-console */
 
+// console
+export const success = (message: string) => {
+  console.log( chalk.greenBright(message) );
+}
+
+export const warning = (message: string) => {
+  console.log( chalk.yellowBright(message) );
+}
+
+export const error = (message: string) => {
+  console.log( chalk.redBright(message) );
+}
+
+// DB connect
 export const npmRunPackageJsonScript = ({ script, currentWorkingDir } : { script: string, currentWorkingDir: string }): void => {
   const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
   spawn(npm, ['run', script], { cwd: currentWorkingDir, stdio: 'inherit' });

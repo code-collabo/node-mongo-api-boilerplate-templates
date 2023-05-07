@@ -6,7 +6,7 @@ const {
   updateOneDemoItemPropertyValueService,
   updateDemoItemPropertyValuesService,
 } = require('../services/demo.service');
-const { success, error } = require('../../lib/consolemsg');
+const { success, error } = require('../../../node-mongo-helpers');
 
 const routeName = 'demo';
 const item = `${routeName}-item`;

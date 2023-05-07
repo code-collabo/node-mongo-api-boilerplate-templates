@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { afterLocalDBconnectSuccessful, connectToDBunsuccessful } from './lib/dbconnect';
+import { afterLocalDBconnectSuccessful, connectToDBunsuccessful } from '../node-mongo-helpers';
 
 dotenv.config();
 
