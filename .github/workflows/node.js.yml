@@ -25,8 +25,19 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 16
-    - run: cd ts && npm ci
-    - run: cd esm && npm ci
-    - run: cd cjs && npm ci
+        always-auth: true
+        registry-url: https://npm.pkg.github.com/
+    - name: Install ts template dependencies using a safe clean install
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      run: cd ts && npm ci
+    - name: Install esm template dependencies using a safe clean install
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      run: cd esm && npm ci
+    - name: Install cjs template dependencies using a safe clean install
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      run: cd cjs && npm ci
 
 

@@ -1,9 +1,29 @@
 const { spawn } = require('child_process');
-const { success, error, warning } = require('./consolemsg');
-const package_json = require('../../package.json');
+const package_json = require('./package.json');
+const chalk = require('chalk');
 
 /* eslint-disable no-console */
 
+// console
+const success = (message) => {
+  console.log( chalk.greenBright(message) );
+}
+
+const warning = (message) => {
+  console.log( chalk.yellowBright(message) );
+}
+
+const error = (message) => {
+  console.log( chalk.redBright(message) );
+}
+
+module.exports = {
+  success,
+  warning,
+  error
+};
+
+// DB connect
 const watchEslint = () => {
   const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
   spawn(npm, ['run', 'lint:watch'], { cwd: './', stdio: 'inherit' });

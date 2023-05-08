@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const { afterAtlasDBconnectSuccessful, connectToDBunsuccessful } = require('./lib/dbconnect');
+const { afterAtlasDBconnectSuccessful, connectToDBunsuccessful } = require('../node-mongo-helpers');
 
 dotenv.config();
 

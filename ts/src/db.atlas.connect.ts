@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { afterAtlasDBconnectSuccessful, connectToDBunsuccessful } from './lib/dbconnect';
+import { afterAtlasDBconnectSuccessful, connectToDBunsuccessful } from '../node-mongo-helpers';
 
 dotenv.config();
 
