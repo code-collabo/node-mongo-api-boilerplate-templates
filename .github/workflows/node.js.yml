@@ -28,9 +28,9 @@ jobs:
         always-auth: true
         node-version: ‘14.x’
         registry-url: https://npm.pkg.github.com/
-    - name: Install ts template dependencies using a safe clean install
-        run: cd ts && npm ci — ignore-scripts
-        env:
+    # - name: Install ts template dependencies using a safe clean install
+    - run: cd ts && npm ci — ignore-scripts
+      env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
     # - run: cd ts && npm ci
     # - run: cd esm && npm ci
