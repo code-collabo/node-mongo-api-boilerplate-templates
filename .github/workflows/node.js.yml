@@ -26,7 +26,6 @@ jobs:
       with:
         node-version: 16
         always-auth: true
-        node-version: ‘14.x’
         registry-url: https://npm.pkg.github.com/
       env:
         NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
