@@ -25,11 +25,15 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 16
-    - name: Log in to registry
-      # Update the personal access token of collabo scripts package GITHUB_TOKEN
-      run: echo "${{ secrets.GITHUB_TOKEN }}"
-    - run: cd ts && npm ci
-    - run: cd esm && npm ci
-    - run: cd cjs && npm ci
+        always-auth: true
+        node-version: ‘14.x’
+        registry-url: https://npm.pkg.github.com/
+    - name: Install ts template dependencies using a safe clean install
+        run: cd ts && npm ci — ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+    # - run: cd ts && npm ci
+    # - run: cd esm && npm ci
+    # - run: cd cjs && npm ci
 
 
