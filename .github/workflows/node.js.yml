@@ -25,6 +25,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 16
+    - name: Log in to registry
+      env:
+      # Update the personal access token of collabo scripts package GITHUB_TOKEN
+      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: cd ts && npm ci
     - run: cd esm && npm ci
     - run: cd cjs && npm ci
