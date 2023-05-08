@@ -25,6 +25,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 16
+      env:
+        # also other environment variable
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: cd ts && npm ci
     - run: cd esm && npm ci
     - run: cd cjs && npm ci
