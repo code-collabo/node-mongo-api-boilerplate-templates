@@ -31,7 +31,13 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       run: cd ts && npm ci
+    - name: Install esm template dependencies using a safe clean install
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       run: cd esm && npm ci
+    - name: Install cjs template dependencies using a safe clean install
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       run: cd cjs && npm ci
 
 
