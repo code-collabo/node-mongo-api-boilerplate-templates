@@ -30,8 +30,8 @@ jobs:
     - name: Install ts template dependencies using a safe clean install
       env:
         NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-    - run: cd ts && npm ci
-    - run: cd esm && npm ci
-    - run: cd cjs && npm ci
+      run: cd ts && npm ci
+      run: cd esm && npm ci
+      run: cd cjs && npm ci
 
 
