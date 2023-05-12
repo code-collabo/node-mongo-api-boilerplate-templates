@@ -17,12 +17,6 @@ const error = (message) => {
   console.log( chalk.redBright(message) );
 }
 
-module.exports = {
-  success,
-  warning,
-  error
-};
-
 // DB connect
 const watchEslint = () => {
   const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
@@ -58,7 +52,12 @@ const connectToDBunsuccessful = (err) => {
   warning('Refer to the node-mongo documentation: https://code-collabo.gitbook.io/node-mongo-v2.0.0\n\nGet further help from Code Collabo Community\'s Node mongo channel: https://matrix.to/#/#collabo-node-mongo:gitter.im\n');
 }
 
+
+// export all helper functions together
 module.exports = {
+  success,
+  warning,
+  error,
   watchEslint,
   server,
   afterAtlasDBconnectSuccessful,
