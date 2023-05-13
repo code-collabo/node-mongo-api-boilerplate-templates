@@ -10,7 +10,7 @@
     "lint": "esw src --color",
     "lint:watch": "npm run lint -- --watch",
     "dev:restore": "node -r esm node-mongo-restore.js",
-    "change:connection": "node -r esm node-mongo.js"
+    "dev:change": "node -r esm node-mongo.js"
   },
   "author": "Obiagba Mary",
   "license": "ISC",
