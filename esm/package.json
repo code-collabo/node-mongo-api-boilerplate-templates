@@ -9,7 +9,7 @@
     "dev:atlas": "nodemon --exec babel-node src/server.atlas.js",
     "lint": "esw src --color",
     "lint:watch": "npm run lint -- --watch",
-    "dev:restore": "node -r esm node-mongo-restore.js",
+    "dev:restore": "node -r esm node-mongo.js",
     "dev:change": "node -r esm node-mongo.js"
   },
   "author": "Obiagba Mary",
