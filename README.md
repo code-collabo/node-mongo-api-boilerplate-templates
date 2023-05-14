@@ -54,13 +54,13 @@ npm install
 - Add your atlas mongoDB uri string to the `MONGODB_ATLAS_URI` environment variable in the .env file
 
 #### Step 4
-Start the automated dev server and choose ATLAS connection:
+Start the automated development server and choose ATLAS connection:
 ````
 npm run dev
 ````
 
 #### Step 4 (alternative)
-You can also use the (manual) dev server alternative for connection to mongoDB atlas:
+You can also use the (manual) development server alternative for connection to mongoDB atlas:
 ````
 npm run dev:atlas
 ````
@@ -83,13 +83,13 @@ npm install
 - Add your local mongoDB uri string to the `MONGODB_LOCAL_URI` environment variable in the .env file
 
 #### Step 4
-Start the automated dev server and choose LOCAL connection:
+Start the automated development server and choose LOCAL connection:
 ````
 npm run dev
 ````
 
 #### Step 4 (alternative)
-You can also use the (manual) dev server alternative for connection to local mongoDB:
+You can also use the (manual) development server alternative for connection to local mongoDB:
 ````
 npm run dev:local
 ````
