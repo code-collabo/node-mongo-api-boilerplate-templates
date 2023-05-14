@@ -25,7 +25,7 @@ This is the manual download option for the API boilerplate templates generated b
 * Three (3) API boilerplate templates to choose from i.e. typescript, es module, or common js templates (a.k.a. ts, esm, cjs) for your nodejs mongoDB development, depending on your preference.
 * API boilerplate templates now use the MVC architecture pattern i.e. separated route, model, controller, and service files.
 * Development environment already set up with @babel (for esm template only), eslint, and server watch.
-* The default connection setup type is MongoDB Atlas. You get to choose if you want to use Atlas or switch to the Local mongoDB connection setup type, and you also get to save your preferred connection type for when next you run the automated dev server.
+* The default connection setup type is MongoDB Atlas. You get to choose if you want to use Atlas or switch to the Local mongoDB connection setup type, and you also get to save your preferred connection type for when next you run the automated development server.
 * Improved user experience with the newly added walk-through prompts in the terminal: quick to setup, easy to use, with automated and improved user support.
 
 #
@@ -94,10 +94,10 @@ You can also use the (manual) dev server alternative for connection to local mon
 npm run dev:local
 ````
 
-## Automated node-mongo-scripts
-- `npm run dev` prompts you to choose your preferred connection setup type the first time you use it, and saves the chosen connection type for every other time you come back to use it. It also automatically installs or set up the db and server files for the chosen connection set up type.
-- `npm run dev:restore` resets the application back to first time usage condition (i.e. it removes your previously saved connection setup type). After using this command, you will now have the option to set your preferred connection type again the next time you start the server with the `npm run dev` command.
-- `npm run dev:change` is useful for when you are not a first time user and want to change your connection set up type without restoring the application to first time usage condition. It will prompt you to choose your connection type, but it will not install the db and server files for the chosen connection set up type.
+## Automated development server and commands
+- `npm run dev` is the command that starts the automated development server. It prompts you to choose your preferred connection setup type the first time you use it, and saves the chosen connection setup type for every other time you come back to use it. It also automatically installs or set up the db and server files for the chosen connection setup type.
+- `npm run dev:restore` resets the automated development server back to first time usage condition i.e. it removes your previously saved connection setup type and the development server will now assume that you are a first timer. After using this command, you will now have the option to set your preferred connection type again the next time you start the server with the `npm run dev` command.
+- `npm run dev:change` is useful for when you are not a first time user and want to change your connection set up type without restoring the automated development server to first time usage condition. It will prompt you to choose your connection setup type, but it will not install the db and server files for the chosen connection setup type.
 
 ## Testing with the demo setup
 A demo setup (i.e. collection, endpoints etc) already exists to help you get started with using the node-mongo API boilerplate templates. Running the demo setup will help you understand how to create your own collection endpoints etc. The API design and API call requests and responses sections below will help you understand how the demo setup works.
