@@ -97,7 +97,7 @@ npm run dev:local
 ## Automated node-mongo-scripts
 - `npm run dev` prompts you to choose your preferred connection setup type the first time you use it, and saves the chosen connection type for every other time you come back to use it. It also automatically installs or set up the db and server files for the chosen connection set up type.
 - `npm run dev:restore` resets the application back to first time usage condition (i.e. it removes your previously saved connection setup type). After using this command, you will now have the option to set your preferred connection type again the next time you start the server with the `npm run dev` command.
-- `npm run change:connection` is useful for when you are not a first time user and want to change your connection set up type without restoring the application to first time usage condition. It will prompt you to choose your connection type, but it will not install the db and server files for the chosen connection set up type.
+- `npm run dev:change` is useful for when you are not a first time user and want to change your connection set up type without restoring the application to first time usage condition. It will prompt you to choose your connection type, but it will not install the db and server files for the chosen connection set up type.
 
 ## Testing with the demo setup
 A demo setup (i.e. collection, endpoints etc) already exists to help you get started with using the node-mongo API boilerplate templates. Running the demo setup will help you understand how to create your own collection endpoints etc. The API design and API call requests and responses sections below will help you understand how the demo setup works.
