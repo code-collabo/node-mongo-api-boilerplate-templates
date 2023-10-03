@@ -24,13 +24,24 @@ export const deleteDemoItemService = async (paramsId: string) => {
   return query;
 }
 
-export const updateOneDemoItemPropertyValueService = async (paramsId: string, requestBody: { propName: string, value: string }[]) => {
-  const updateOps: Record<string, string> = {};
-  for (const ops of requestBody) {
-    updateOps[ops.propName] = ops.value;
+// const testFn = (obj: DemoDocument, key: keyof DemoDocument, value: (any |never) ) => {
+//   obj[key] = value
+// }
+
+export const updateOneDemoItemPropertyValueService = async (paramsId: string, requestBody: DemoDocument) => {
+ 
+  console.log(requestBody);
+  console.log("----------------------------");
+
+  const queryDoc = await Demo.findById(paramsId).select('_id name age').exec() as DemoDocument;
+  console.log(queryDoc);
+  console.log("----------------------------")
+
+  for (const key in requestBody) {
+    console.log(queryDoc[key as keyof DemoDocument])
+
+    // testFn(queryDoc, key as keyof DemoDocument, requestBody[key as keyof DemoDocument])
   }
-  const query = await Demo.updateOne({ _id: paramsId }, { $set: updateOps }).exec();
-  return query;
 };
 
 export const updateDemoItemPropertyValuesService = async (paramsId: string, requestBody: DemoDocument) => {

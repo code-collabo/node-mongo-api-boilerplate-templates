@@ -26,12 +26,14 @@ function deleteDemoItemService (paramsId) {
 };
 
 function updateOneDemoItemPropertyValueService (paramsId, requestBody) {
-  const updateOps = {};
-  for (const ops of requestBody) {
-    updateOps[ops.propName] = ops.value;
-  }
-  const query = Demo.updateOne({ _id: paramsId }, { $set: updateOps }).exec();
-  return query;
+  Demo.findById(paramsId).then((queryDoc)=>{
+    if(queryDoc){
+      for (const ops of requestBody) {
+        queryDoc[ops.propName] = ops.value;
+      }
+      return queryDoc.save();
+    }
+  });
 };
 
 function updateDemoItemPropertyValuesService (paramsId, requestBody) {
