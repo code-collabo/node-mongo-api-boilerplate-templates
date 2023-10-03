@@ -25,15 +25,15 @@ function deleteDemoItemService (paramsId) {
   return query;
 };
 
-function updateOneDemoItemPropertyValueService (paramsId, requestBody) {
-  Demo.findById(paramsId).then((queryDoc)=>{
-    if(queryDoc){
-      for (const ops of requestBody) {
-        queryDoc[ops.propName] = ops.value;
-      }
-      return queryDoc.save();
-    }
-  });
+async function updateOneDemoItemPropertyValueService (paramsId, requestBody) {
+  const queryDoc = await Demo.findById(paramsId).select('_id name age').exec();
+
+  for (const ops of requestBody) {
+    queryDoc[ops.propName] = ops.value;
+  }
+
+  const save = await queryDoc.save();
+  return save;
 };
 
 function updateDemoItemPropertyValuesService (paramsId, requestBody) {
