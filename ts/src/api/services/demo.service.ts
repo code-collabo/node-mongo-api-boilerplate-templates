@@ -24,13 +24,19 @@ export const deleteDemoItemService = async (paramsId: string) => {
   return query;
 }
 
-export const updateOneDemoItemPropertyValueService = async (paramsId: string, requestBody: { propName: string, value: string }[]) => {
-  const updateOps: Record<string, string> = {};
-  for (const ops of requestBody) {
-    updateOps[ops.propName] = ops.value;
-  }
-  const query = await Demo.updateOne({ _id: paramsId }, { $set: updateOps }).exec();
-  return query;
+export const updateOneDemoItemPropertyValueService = async (paramsId: string, requestBody: DemoDocument) => {
+
+  const queryDoc = await Demo.findById(paramsId).select('_id name age').exec() as DemoDocument;
+
+  Object.keys(requestBody).forEach(key => {
+    if(key in queryDoc)
+      queryDoc[key as keyof DemoDocument] = requestBody[key as keyof DemoDocument] as never;
+    else 
+      throw new Error(`property '${key}' does not exist in the mongoose model`)
+  });
+
+  const save = await queryDoc.save();
+  return save;
 };
 
 export const updateDemoItemPropertyValuesService = async (paramsId: string, requestBody: DemoDocument) => {

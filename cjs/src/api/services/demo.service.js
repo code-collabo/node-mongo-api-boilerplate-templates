@@ -25,13 +25,18 @@ function deleteDemoItemService (paramsId) {
   return query;
 };
 
-function updateOneDemoItemPropertyValueService (paramsId, requestBody) {
-  const updateOps = {};
-  for (const ops of requestBody) {
-    updateOps[ops.propName] = ops.value;
-  }
-  const query = Demo.updateOne({ _id: paramsId }, { $set: updateOps }).exec();
-  return query;
+async function updateOneDemoItemPropertyValueService (paramsId, requestBody) {
+  const queryDoc = await Demo.findById(paramsId).select('_id name age').exec();
+
+  Object.keys(requestBody).forEach(key => {
+    if(key in queryDoc)
+      queryDoc[key] = requestBody[key];
+    else 
+      throw new Error(`property '${key}' does not exist in the mongoose model`)
+  });
+
+  const save = await queryDoc.save();
+  return save;
 };
 
 function updateDemoItemPropertyValuesService (paramsId, requestBody) {
