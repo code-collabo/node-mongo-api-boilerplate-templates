@@ -64,20 +64,16 @@ export const createDemoItemController = async (req: Request, res: Response) => {
 export const getOneDemoItemController = async (req: Request, res: Response) => {
   try {
     const doc = await getOneDemoItemService(req.params.demoId);
-    if (doc) {
-      response = {
-        message: `GET (find one ${item}) request successfull`,
-        item: {
-          _id: doc._id,
-          name: doc.name,
-          age: doc.age,
-        },
-      }
-      success(`GET (find one ${item}) request successfull`);
-      return res.status(200).json(response);
-    } else {
-      throw new Error('No record found for provided ID');
+    response = {
+      message: `GET (find one ${item}) request successfull`,
+      item: {
+        _id: doc._id,
+        name: doc.name,
+        age: doc.age,
+      },
     }
+    success(`GET (find one ${item}) request successfull`);
+    return res.status(200).json(response);
   } catch (err) {
     error(`ERROR retrieving ${item}`);
     res.status(500).json({
@@ -89,16 +85,12 @@ export const getOneDemoItemController = async (req: Request, res: Response) => {
 
 export const deleteDemoItemController = async (req: Request, res: Response) => {
   try {
-    const check = await deleteDemoItemService(req.params.demoId);
-    if (check.deletedCount !== 0){
-      response = {
-        message: `DELETE (delete specific ${item}) request successfull`,
-      }
-      success(`DELETE (delete specific ${item}) request successfull`);
-      return res.status(200).json(response);
-    } else {
-      throw new Error('No record found for provided ID');
+    await deleteDemoItemService(req.params.demoId);
+    response = {
+      message: `DELETE (delete specific ${item}) request successfull`,
     }
+    success(`DELETE (delete specific ${item}) request successfull`);
+    return res.status(200).json(response);
   } catch (err) {
     error(`ERROR deleting specified ${item}`);
     res.status(500).json({
@@ -111,20 +103,16 @@ export const deleteDemoItemController = async (req: Request, res: Response) => {
 export const updateOneDemoItemPropertyValueController = async (req: Request, res: Response) => {
   try {
     const doc = await updateOneDemoItemPropertyValueService(req.params.demoId, req.body);
-    if (doc) {
-      response = {
-        message: `PATCH (update specific ${item} property) request successfull`,
-        item: {
-          _id: doc._id,
-          name: doc.name,
-          age: doc.age,
-        },
-      }
-      success(`PATCH (update specific ${item} property) request successfull`);
-      return res.status(200).json(response);
-    } else {
-      throw new Error('No record found for provided ID');
+    response = {
+      message: `PATCH (update specific ${item} property) request successfull`,
+      item: {
+        _id: doc._id,
+        name: doc.name,
+        age: doc.age,
+      },
     }
+    success(`PATCH (update specific ${item} property) request successfull`);
+    return res.status(200).json(response);
   } catch (err) {
     error(`ERROR updating ${item} property`);
     res.status(500).json({
@@ -137,20 +125,16 @@ export const updateOneDemoItemPropertyValueController = async (req: Request, res
 export const updateDemoItemPropertyValuesController = async (req: Request, res: Response) => {
   try {
     const doc = await updateDemoItemPropertyValuesService(req.params.demoId, req.body);
-    if (doc) {
-      response = {
-        message: `PUT (update ${item} properties) request successfull`,
-        item: {
-          _id: doc._id,
-          name: doc.name,
-          age: doc.age,
-        },
-      }
-      success(`PUT (update ${item} properties) request successfull`);
-      return res.status(200).json(response);
-    } else {
-      throw new Error('No record found for provided ID');
+    response = {
+      message: `PUT (update ${item} properties) request successfull`,
+      item: {
+        _id: doc._id,
+        name: doc.name,
+        age: doc.age,
+      },
     }
+    success(`PUT (update ${item} properties) request successfull`);
+    return res.status(200).json(response);
   } catch (err) {
     error(`ERROR updating ${item} properties`);
     res.status(500).json({

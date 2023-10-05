@@ -10,34 +10,56 @@ export const createDemoItemService = async (requestBody) => {
     name: requestBody.name,
     age: requestBody.age,
   });
-  const save = await demo.save();
-  return save;
+  const savedDoc = await demo.save();
+  return savedDoc;
 };
 
 export const getOneDemoItemService = async (paramsId) => {
   const query = await Demo.findById(paramsId).select('_id name age').exec();
+  if(!query){
+    throw new Error('No record found for provided ID');
+  }
   return query;
 };
 
 export const deleteDemoItemService = async (paramsId) => {
   const query = await Demo.deleteOne({ _id: paramsId }).exec();
+  if(query.deletedCount === 0){
+    throw new Error('No record found for provided ID');
+  }
   return query;
 };
 
 export const updateOneDemoItemPropertyValueService = async (paramsId, requestBody) => {
-  const updateOps = {};
-  for (const ops of requestBody) {
-    updateOps[ops.propName] = ops.value;
+  const query = await Demo.findById(paramsId).select('_id name age').exec();
+  if(!query){
+    throw new Error('No record found for provided ID');
   }
-  const query = await Demo.findByIdAndUpdate(paramsId, { $set: updateOps }, { new: true }).exec();
-  return query;
+
+  for (const ops of requestBody) {
+    query[ops.propName] = ops.value;
+  }
+
+  // for (const ops of requestBody) {
+  //   if(ops.propName in queryDoc)
+  //     queryDoc[ops.propName] = ops.value;
+  //   else 
+  //     throw new Error(`property '${ops.propName}' does not exist in the mongoose model`)
+  // }
+
+  const savedDoc = await query.save();
+  return savedDoc;
 };
 
 export const updateDemoItemPropertyValuesService = async (paramsId, requestBody) => {
-  const resetItem = {
-    name: requestBody.name,
-    age: requestBody.age,
-  };
-  const query = await Demo.findByIdAndUpdate(paramsId, { $set: resetItem }, { new: true }).exec();
-  return query;
+  const query = await Demo.findById(paramsId).select('_id name age').exec();
+  if(!query){
+    throw new Error('No record found for provided ID');
+  }
+
+  query.name = requestBody.name;
+  query.age = requestBody.age;
+  
+  const savedDoc = await query.save();
+  return savedDoc;
 };
