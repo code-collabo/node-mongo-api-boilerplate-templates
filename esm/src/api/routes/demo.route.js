@@ -15,6 +15,6 @@ router.post('/', createDemoItemController);
 router.get('/:demoId', getOneDemoItemController);
 router.delete('/:demoId', deleteDemoItemController);
 router.patch('/:demoId', updateOneDemoItemPropertyValueController);
-router.put('/:id', updateDemoItemPropertyValuesController);
+router.put('/:demoId', updateDemoItemPropertyValuesController);
 
 export { router };

@@ -17,25 +17,23 @@ const getDemoItemsController = function (req, res) {
   getDemoItemsService()
   .then((docs) => {
     response = {
+      message: `GET (find all ${item}s) Request Successful`,
       count: docs.length,
       items: docs.map((doc) => {
         return {
           _id: doc._id,
           name: doc.name,
           age: doc.age,
-          request: {
-            type: 'GET',
-            url: `http://localhost:3000/${routeName}/${doc._id}`,
-          },
         };
       }),
     };
-    success(`GET request successful!`);
+    success(`GET (find all ${item}s) Request Successful`);
     return res.status(200).json(response);
   })
   .catch((err) => {
-    error(`Error retriving ${item}s: ${err}`);
+    error(`ERROR retrieving all ${item}s`);
     res.status(500).json({
+      message: `ERROR retrieving all ${item}s`,
       error: `${err}`,
     });
   });
@@ -45,23 +43,20 @@ const createDemoItemController = function (req, res) {
   createDemoItemService(req)
   .then((doc) => {
     response = {
-      message: `${item} created successfully!`,
-      newItem: {
+      message: `POST (create a ${item}) request successfull`,
+      item: {
         _id: doc._id,
         name: doc.name,
         age: doc.age,
-        request: {
-          type: 'GET',
-          url: `http://localhost:3000/${routeName}/${doc._id}`,
-        },
       },
     }
-    success(`${item} CREATED successfully!`);
+    success(`POST (create a ${item}) request successfull`);
     return res.status(201).json(response);
   })
   .catch((err) => {
-    error(`Error saving ${item}: ${err}`);
+    error(`ERROR creating ${item}`);
     res.status(500).json({
+      message: `ERROR creating ${item}`,
       error: `${err}`,
     });
   });
@@ -73,28 +68,23 @@ const getOneDemoItemController = function (req, res) {
   .then((doc) => {
     if (doc) {
       response = {
-        _id: doc._id,
-        name: doc.name,
-        age: doc.age,
-        request: {
-          type: 'GET',
-          description: `Url link to all ${item}s`,
-          url: `http://localhost:3000/${routeName}/`,
+        message: `GET (find one ${item}) request successfull`,
+        item: {
+          _id: doc._id,
+          name: doc.name,
+          age: doc.age,
         },
       }
-      success(`GET request successful!`);
+      success(`GET (find one ${item}) request successfull`);
       return res.status(200).json(response);
     } else {
-      error('No record found for provided ID');
-      return res.status(404).json({
-        message: 'No record found for provided ID',
-      });
+      throw new Error('No record found for provided ID');
     }
   })
   .catch((err) => {
-    error(`Error retriving ${item}: ${err}`);
+    error(`ERROR retrieving ${item}`);
     res.status(500).json({
-      message: 'Invalid ID',
+      message: `ERROR retrieving ${item}`,
       error: `${err}`,
     });
   });
@@ -103,74 +93,75 @@ const getOneDemoItemController = function (req, res) {
 const deleteDemoItemController = function (req, res) {
   const id = req.params.demoId;
   deleteDemoItemService(id)
-  .then(() => {
-    response = {
-      message: `${item} deleted successfully!`,
-      request: {
-        type: 'POST',
-        description: 'Url link to make post request to',
-        url: `http://localhost:3000/${item}/`,
-        body: {
-          name: 'String',
-          age: 'Number',
-        },
-      },
+  .then((check) => {
+    if (check.deletedCount !== 0){
+      response = {
+        message: `DELETE (delete specific ${item}) request successfull`,
+      }
+      success(`DELETE (delete specific ${item}) request successfull`);
+      return res.status(200).json(response);
+    } else {
+      throw new Error('No record found for provided ID');
     }
-    success(`${item} DELETED successfully!`);
-    return res.status(200).json(response);
   })
   .catch((err) => {
-    error(`Error deleting ${item}: ${err}`);
+    error(`ERROR deleting specified ${item}`);
     res.status(500).json({
-      message: `Error deleting ${item}`,
+      message: `ERROR deleting specified ${item}`,
       error: `${err}`,
     });
   });
 };
 
 const updateOneDemoItemPropertyValueController = function (req, res) {
-  const id = req.params.demoId;
-  updateOneDemoItemPropertyValueService(id, req.body)
-  .then(() => {
-    response = {
-      message: 'Patch request successful!',
-      request: {
-        type: 'GET',
-        description: `Url link to updated ${item}`,
-        url: `http://localhost:3000/${routeName}/${id}`,
-      },
-    };
-    success(`PATCH request for ID ${id} successful!`);
-    return res.status(200).json(response);
+  updateOneDemoItemPropertyValueService(req.params.demoId, req.body)
+  .then((doc) => {
+    if (doc) {
+      response = {
+        message: `PATCH (update specific ${item} property) request successfull`,
+        item: {
+          _id: doc._id,
+          name: doc.name,
+          age: doc.age,
+        },
+      }
+      success(`PATCH (update specific ${item} property) request successfull`);
+      return res.status(200).json(response);
+    } else {
+      throw new Error('No record found for provided ID');
+    }
   })
   .catch((err) => {
-    error(`Error updating ${item} property & value: ${err}`);
+    error(`ERROR updating ${item} property`);
     res.status(500).json({
-      message: `Error updating ${item} property & value`,
+      message: `ERROR updating ${item} property`,
       error: `${err}`,
     });
   });
 };
 
 const updateDemoItemPropertyValuesController = function (req, res) {
-  const id = req.params.id;
-  updateDemoItemPropertyValuesService(id, req.body)
-  .then(() => {
-    response = {
-      message: `Put request successful!`,
-      request: {
-        type: 'GET',
-        description: `Url link to updated ${item}`,
-        url: `http://localhost:3000/${routeName}/${id}`,
-      },
-    };
-    success(`PUT request for ID ${id} successful!`);
-    return res.status(200).json(response);
+  updateDemoItemPropertyValuesService(req.params.demoId, req.body)
+  .then((doc) => {
+    if (doc) {
+      response = {
+        message: `PUT (update ${item} properties) request successfull`,
+        item: {
+          _id: doc._id,
+          name: doc.name,
+          age: doc.age,
+        },
+      }
+      success(`PUT (update ${item} properties) request successfull`);
+      return res.status(200).json(response);
+    } else {
+      throw new Error('No record found for provided ID');
+    }
   })
   .catch((err) => {
-    error(`Error updating ${item}: ${err}`);
+    error(`ERROR updating ${item} properties`);
     res.status(500).json({
-      message: `Error updating ${item}`,
+      message: `ERROR updating ${item} properties`,
       error: `${err}`,
     });
   });
