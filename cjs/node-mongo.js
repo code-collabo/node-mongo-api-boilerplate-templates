@@ -1,4 +1,3 @@
-import { chooseNodeMongoApiDBServer } from '@code-collabo/node-mongo-scripts/index';
+import { processNodeMongoApiDBServerCommand } from '@code-collabo/node-mongo-scripts/index';
 
-chooseNodeMongoApiDBServer();
-
+processNodeMongoApiDBServerCommand();

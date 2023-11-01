@@ -37,13 +37,8 @@ const eslintAndServer = (serverPort) => {
   server(serverPort);
 }
 
-const afterAtlasDBconnectSuccessful = (serverPort) => {
-  success('\nConnected to mongoDB ATLAS');
-  eslintAndServer(serverPort);
-}
-
-const afterLocalDBconnectSuccessful = (serverPort) => {
-  success('\nConnected to LOCAL mongoDB');
+const afterDBConnectSuccessful = (serverPort, message) => {
+  success(message);
   eslintAndServer(serverPort);
 }
 
@@ -60,7 +55,6 @@ module.exports = {
   error,
   watchEslint,
   server,
-  afterAtlasDBconnectSuccessful,
-  afterLocalDBconnectSuccessful,
+  afterDBConnectSuccessful,
   connectToDBunsuccessful,
 };

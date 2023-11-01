@@ -4,13 +4,11 @@
   "description": "@code-collabo node-mongo API boilerplate template - es module",
   "main": "src/server.[atlas/local].js",
   "scripts": {
-    "dev": "node -r esm node-mongo.js",
-    "dev:local": "node -r esm node-mongo.js babel-node src/server.local.js",
-    "dev:atlas": "node -r esm node-mongo.js babel-node src/server.atlas.js",
+    "dev": "node -r esm node-mongo.js babel-node src/server.js",
+    "dev:server": "node -r esm node-mongo.js babel-node src/server.js",
+    "dev:change": "node -r esm node-mongo.js",
     "lint": "esw src --color",
-    "lint:watch": "npm run lint -- --watch",
-    "dev:restore": "node -r esm node-mongo.js",
-    "dev:change": "node -r esm node-mongo.js"
+    "lint:watch": "npm run lint -- --watch"
   },
   "author": "Obiagba Mary",
   "license": "ISC",
