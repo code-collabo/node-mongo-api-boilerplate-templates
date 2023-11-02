@@ -29,7 +29,7 @@ export const updateOneDemoItemPropertyValueService = async (paramsId, requestBod
   for (const ops of requestBody) {
     updateOps[ops.propName] = ops.value;
   }
-  const query = await Demo.updateOne({ _id: paramsId }, { $set: updateOps }).exec();
+  const query = await Demo.findByIdAndUpdate(paramsId, { $set: updateOps }, { new: true }).exec();
   return query;
 };
 
