@@ -25,12 +25,17 @@ export const deleteDemoItemService = async (paramsId: string) => {
 }
 
 export const updateOneDemoItemPropertyValueService = async (paramsId: string, requestBody: { propName: string, value: string }[]) => {
-  const updateOps: Record<string, string> = {};
-  for (const ops of requestBody) {
-    updateOps[ops.propName] = ops.value;
+  const query = await Demo.findById(paramsId).select('_id name age').exec();
+  if(!query){
+    throw new Error('No record found for provided ID');
   }
-  const query = await Demo.updateOne({ _id: paramsId }, { $set: updateOps }).exec();
-  return query;
+
+  for (const ops of requestBody) {
+    query[ops.propName as keyof DemoDocument] = ops.value as never;
+  }
+
+  const updatedQuery = await query.save();
+  return updatedQuery;
 };
 
 export const updateDemoItemPropertyValuesService = async (paramsId: string, requestBody: DemoDocument) => {
