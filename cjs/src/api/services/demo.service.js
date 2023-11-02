@@ -30,7 +30,7 @@ function updateOneDemoItemPropertyValueService (paramsId, requestBody) {
   for (const ops of requestBody) {
     updateOps[ops.propName] = ops.value;
   }
-  const query = Demo.updateOne({ _id: paramsId }, { $set: updateOps }).exec();
+  const query = Demo.findByIdAndUpdate(paramsId, { $set: updateOps }, { new: true }).exec();
   return query;
 };
 

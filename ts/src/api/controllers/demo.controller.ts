@@ -126,17 +126,24 @@ export const deleteDemoItemController = async (req: Request, res: Response) => {
 export const updateOneDemoItemPropertyValueController = async (req: Request, res: Response) => {
   try {
     const id: string = req.params.demoId;
-    await updateOneDemoItemPropertyValueService(id, req.body);
-    response = {
-      message: 'Patch request successful!',
-      request: {
-        type: 'GET',
-        description: `Url link to updated ${item}`,
-        url: `http://localhost:3000/${routeName}/${id}`,
-      },
-    };
-    success(`PATCH request for ID ${id} successful!`);
-    return res.status(200).json(response);
+    const doc = await updateOneDemoItemPropertyValueService(id, req.body);
+    if (doc) {
+      response = {
+        message: 'Patch request successful!',
+        request: {
+          type: 'GET',
+          description: `Url link to updated ${item}`,
+          url: `http://localhost:3000/${routeName}/${id}`,
+        },
+      };
+      success(`PATCH request for ID ${id} successful!`);
+      return res.status(200).json(response);
+    } else {
+      error('No record found for provided ID');
+      return res.status(404).json({
+        message: 'No record found for provided ID',
+      });
+    }
   } catch (err) {
     error(`Error updating ${item} property & value: ${err}`);
     res.status(500).json({
