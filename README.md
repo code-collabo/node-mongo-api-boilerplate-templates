@@ -61,7 +61,7 @@ Thanks to these amazing contributors to the node-mongo-api-boilerplate-templates
     </tr>
   </tbody>
 </table>
-<!-- testing github flow -->
+<!-- testing github flows -->
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
